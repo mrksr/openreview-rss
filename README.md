@@ -62,7 +62,7 @@ PLOT - Plotting and visualization tools.
 
 Individual scripts can be run using:
 ```bash
-python3 openreview/my_script.py
+python3 openreview/scripts/my_script.py
 ```
 All scripts are designed to be executable, whereas frequently used functionality and tools can be found in the subdirectory `utils`. Typically, the `main()` function of each script contains several actions that can be called or are commented out. These can often be run in sequence or separately, depending on the need.
 
