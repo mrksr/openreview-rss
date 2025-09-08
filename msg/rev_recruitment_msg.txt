@@ -1,0 +1,21 @@
+Dear {{fullname}},
+
+You have been nominated by the program chair committee of RSS 2025 to serve as {{invitee_role}}. As a respected researcher in the area, we hope you will accept and help us make RSS 2025 a success.
+
+As a Reviewer, you will be responsible for reviewing 3-4 papers between February 10 and March 10.
+
+You are also welcome to submit papers, so please also consider submitting to RSS 2025.
+
+We will be using OpenReview.net with the intention of have an engaging reviewing process, but reviews will remain private.
+
+To respond the invitation, please click on the following link:
+
+{{invitation_url}}
+
+If you accept, please complete the Reviewer registration task (https://openreview.net/tasks) by updating your OpenReview profile, expertise, and keyword selection at your earliest convenience.
+
+If you have any questions, please contact {{contact_info}}.
+
+Cheers!
+
+RSS 2025 Program Chairs

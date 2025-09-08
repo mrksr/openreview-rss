@@ -1,0 +1,36 @@
+%!TEX root = main.tex
+\lstdefinelanguage{mine} 
+{morekeywords={while,True,if,break,=,return,function,for,until,in,input,output,assumptions,assumption,invariant,loop,variant,end,invariant,precondition,variables}, 
+sensitive=false, 
+morecomment=[l]{\#}, 
+morecomment=[il]\%{.}, 
+morecomment=[s]{/*}{*/}, 
+morestring=[b]", 
+} 
+
+\lstset{% general command to set parameter(s) 
+basicstyle=\small\rmfamily, % print whole listing small 
+keywordstyle=\color{black}\bfseries, 
+% underlined bold black keywords 
+identifierstyle=, % nothing happens 
+commentstyle=\color[rgb]{0.2,0.2,0.2},
+stringstyle=\ttfamily, % typewriter type for strings 
+showstringspaces=false,
+mathescape=true,
+fontadjust=true,
+columns=fullflexible} % no special string spaces 
+\lstset{frameround=fttt,frame=none}
+
+\usepackage{calc}
+\newlength\listingnumberwidth
+\setlength\listingnumberwidth{\widthof{00}}
+\lstset{
+numbers=left,
+xleftmargin=\listingnumberwidth,
+numbersep=1em
+}
+
+
+\lstset{escapeinside={*@}{@*}}
+
+\newcommand{\tuple}[2]{\langle#1,#2\rangle}

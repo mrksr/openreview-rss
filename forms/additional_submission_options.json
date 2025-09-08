@@ -1,0 +1,130 @@
+{
+  "category": {
+    "description": "Please select your submission category.",
+    "order": 3,
+    "value": {
+      "param": {
+        "type": "string",
+        "enum": [
+          "Science/Systems Paper",
+          "Demo"
+        ],
+        "input": "radio"
+      }
+    }
+  },
+  "keywords": {
+    "order": 4,
+    "description": "Please specify 3 keywords in decreasing order of importance.",
+    "value": {
+      "param": {
+        "type": "string[]",
+        "optional": false,
+        "input": "select",
+        "enum": [
+          "Assembly, Logistics and Manufacturing",
+          "Assistive, Entertainment and Service Robots",
+          "Autonomous Vehicle Navigation & Mobile Robots",
+          "Bioinspired Robots",
+          "Control & Dynamics",
+          "Cognitive Modeling & Knowledge Representation for Robots",
+          "Field Robotics (e.g., Aerial, Agricultural, Construction, Space, Underwater Robotics)",
+          "Formal Methods for Robotics",
+          "Grasping & Manipulation",
+          "Human-Robot Interaction",
+          "Humanoid & Walking Robots",
+          "Mechanisms & Design",
+          "Medical Robotics",
+          "Multi-Robot & Networked Systems",
+          "Robot Learning: Foundation Models",
+          "Robot Learning: Reinforcement Learning",
+          "Robot Learning: Imitation Learning",
+          "Robot Learning: Model Learning",
+          "Robot Learning: Datasets and Benchmarks",
+          "Robot Modeling & Simulation",
+          "Perceptual Learning",
+          "Robot Perception, Sensing & Vision",
+          "Robot Planning",
+          "Robot State Estimation, Localization & Mapping",
+          "Soft Robots"
+        ]
+      }
+    }
+  },
+  "pdf": {
+    "value": {
+      "param": {
+        "type": "file",
+        "extensions": [
+          "pdf"
+        ],
+        "maxSize": 100,
+        "optional": false,
+        "deletable": false
+      }
+    },
+    "description": "Please upload the PDF of your paper. The maximum file size is 100MB. Can be left blank for the abstract registration, but needs to be uploaded before the paper submission deadline.",
+    "order": 7
+  },
+  "supplementary_material": {
+    "value": {
+      "param": {
+        "type": "file",
+        "extensions": [
+          "zip",
+          "pdf"
+        ],
+        "maxSize": 100,
+        "optional": true,
+        "deletable": true
+      }
+    },
+    "description": "All supplementary material must be self-contained and zipped into a single file. Note that supplementary material will be visible to reviewers, so ensure all material is anonymized. The maximum file size is 100MB. The deadline for supplementary material is one week after the paper submission deadline.",
+    "order": 8
+  },
+  "confirmation_of_submission_requirements": {
+    "order": 9,
+    "description": "Before submitting any paper, please carefully read the submission instructions found here: https://roboticsconference.org/information/authorinfo/. If any of these requirements are not fulfilled, your submission will be rejected and will not be reviewed.",
+    "value": {
+      "param": {
+        "type": "string[]",
+        "optional": false,
+        "enum": [
+          "I have carefully read the submission instructions and prepared my paper accordingly.",
+          "I have included a \"Limitations\" section in my paper.",
+          "This work contains novel research that was not previously published or submitted elsewhere."
+        ],
+        "input": "checkbox"
+      }
+    }
+  },
+  "additional_requirements_for_science_or_systems_papers": {
+    "order": 10,
+    "description": "Before you submit a Science/Systems paper, please make sure that the following requirements are met. If any of these requirements are not fulfilled, your submission will be rejected and will not be reviewed. These are not required for Demo papers which are reviewed single blind.",
+    "value": {
+      "param": {
+        "type": "string[]",
+        "optional": true,
+        "enum": [
+          "I have anonymized my paper for double blind review.",
+          "There are no external links in my paper."
+        ],
+        "input": "checkbox"
+      }
+    }
+  },
+  "additional_requirements_for_demo_papers": {
+    "order": 11,
+    "description": "Before you submit a Demo paper, please make sure that the following requirements are met. If any of these requirements are not fulfilled, your submission will be rejected and will not be reviewed. These are not required for Science/Systems papers.",
+    "value": {
+      "param": {
+        "type": "string[]",
+        "optional": true,
+        "enum": [
+          "The title of my demo paper starts with \"Demonstrating\" (e.g. \"Demonstrating Large Language Models on Robots\")."
+        ],
+        "input": "checkbox"
+      }
+    }
+  }
+}

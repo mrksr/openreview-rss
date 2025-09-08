@@ -1,0 +1,8 @@
+{
+    "enable_reviewers_reassignment": {
+        "value": true
+    },
+    "reviewers_proposed_assignment_title": {
+        "value": "Reviewer_Matching"
+    }
+}

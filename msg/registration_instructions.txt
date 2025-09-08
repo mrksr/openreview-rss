@@ -1,0 +1,9 @@
+As an Area Chair, please complete the following three tasks to complete the registration:
+
+1) Update your OpenReview profile. This information will be used to avoid conflicts of interests (CoI). You can find your OpenReview profile here: https://openreview.net/profile, or by clicking on your name in the top right corner. Afterwards click "Edit Profile" and complete all sections.
+
+2) Complete your Expertise Selection by importing your relevant papers to OpenReview. This information will be used to compute affinity scores and match papers to ACs and reviewers. You can find your expertise selection here: https://openreview.net/invitation?id=roboticsfoundation.org/RSS/2025/Conference/Area_Chairs/-/Expertise_Selection, or by navigating to "Tasks->RSS 2025->Area Chair Registration" in the top right corner.
+
+3) Please select at least 3 RSS Keywords that describe your expertise in decreasing order of priority. These will be used to match papers to ACs and reviewers.
+
+Thank you for serving as an Area Chair for RSS 2025, we're excited to have you on board!

@@ -1,0 +1,40 @@
+{
+  "keyword_selection": {
+    "order": 4,
+    "description": "Please specify at least 3 keywords in decreasing order of importance.",
+    "value": {
+      "param": {
+        "type": "string[]",
+        "optional": false,
+        "input": "select",
+        "enum": [
+          "Assembly, Logistics and Manufacturing",
+          "Assistive, Entertainment and Service Robots",
+          "Autonomous Vehicle Navigation & Mobile Robots",
+          "Bioinspired Robots",
+          "Control & Dynamics",
+          "Cognitive Modeling & Knowledge Representation for Robots",
+          "Field Robotics (e.g., Aerial, Agricultural, Construction, Space, Underwater Robotics)",
+          "Formal Methods for Robotics",
+          "Grasping & Manipulation",
+          "Human-Robot Interaction",
+          "Humanoid & Walking Robots",
+          "Mechanisms & Design",
+          "Medical Robotics",
+          "Multi-Robot & Networked Systems",
+          "Robot Learning: Foundation Models",
+          "Robot Learning: Reinforcement Learning",
+          "Robot Learning: Imitation Learning",
+          "Robot Learning: Model Learning",
+          "Robot Learning: Datasets and Benchmarks",
+          "Robot Modeling & Simulation",
+          "Perceptual Learning",
+          "Robot Perception, Sensing & Vision",
+          "Robot Planning",
+          "Robot State Estimation, Localization & Mapping",
+          "Soft Robots"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,173 @@
+{
+  "summary_of_contribution": {
+    "value": {
+      "param": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 20000,
+        "input": "textarea",
+        "markdown": true
+      }
+    },
+    "order": 1,
+    "description": "Briefly describe the claimed contribution of the submission given your understanding. All text has a maximum of 200000 characters and supports formatting using Markdown and formulas using LaTeX. For more information see https://openreview.net/faq."
+  },
+  "summary_of_strengths": {
+    "value": {
+      "param": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 20000,
+        "input": "textarea",
+        "markdown": true
+      }
+    },
+    "order": 2,
+    "description": "Describe what you perceive as the positive aspects of the submission. Consider aspects such as lessons learned and impact to the community, domain relevance and importance, significance of theoretical or experimental results or demonstrations, soundness and novelty of methods, appropriate coverage of related work, clarity of presentation."
+  },
+  "summary_of_limitations": {
+    "value": {
+      "param": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 20000,
+        "input": "textarea",
+        "markdown": true
+      }
+    },
+    "order": 3,
+    "description": "Describe what you perceive as limitations of the submission. Consider aspects such as lessons learned and impact to the community, domain relevance and importance, significance of theoretical or experimental results or demonstrations, soundness and novelty of methods, appropriate coverage of related work, clarity of presentation."
+  },
+  "feedback_for_improvement_and_clarification_requests": {
+    "value": {
+      "param": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 20000,
+        "input": "textarea",
+        "markdown": true
+      }
+    },
+    "order": 4,
+    "description": "Indicate suggestions for improvement of this line of work, if appropriate, and list any specific points of clarification that you would like to request from the authors. The authors will have an opportunity to respond to these items in the author feedback stage."
+  },
+  "nature_of_contribution": {
+    "value": {
+      "param": {
+        "type": "string",
+        "enum": [
+          {
+            "value": "Science Paper"
+          },
+          {
+            "value": "Systems Paper"
+          },
+          {
+            "value": "Demo"
+          }
+        ],
+        "input": "select"
+      }
+    },
+    "order": 5,
+    "description": "If this is a regular paper, do you perceive its primary intended contribution to be that of a science or a systems paper? If this is a demo submission, do you consider the choice of a demo submission to be appropriate?"
+  },
+  "overall_recommendation": {
+    "value": {
+      "param": {
+        "type": "integer",
+        "enum": [
+          {
+            "value": 6,
+            "description": "Strong Accept: This is a very strong paper, I will fight for its acceptance."
+          },
+          {
+            "value": 5,
+            "description": "Accept: This is a strong paper that should be accepted."
+          },
+          {
+            "value": 4,
+            "description": "Weak Accept: My opinion on this paper could be swayed, but I am leaning accept."
+          },
+          {
+            "value": 3,
+            "description": "Weak Reject: My opinion on this paper could be swayed, but I am leaning reject."
+          },
+          {
+            "value": 2,
+            "description": "Reject: This is not a strong paper that should be rejected."
+          },
+          {
+            "value": 1,
+            "description": "Strong Reject: The paper is trivial, known, or wrong, I will fight for its rejection."
+          }
+        ],
+        "input": "radio"
+      }
+    },
+    "order": 6,
+    "description": "Considering the above comments, indicate your  overall recommendation. This will be visible to authors after the final decision.",
+    "readers": [
+      "roboticsfoundation.org/RSS/2025/Conference/Program_Chairs",
+      "roboticsfoundation.org/RSS/2025/Conference/Submission${7/content/noteNumber/value}/Senior_Area_Chairs",
+      "roboticsfoundation.org/RSS/2025/Conference/Submission${7/content/noteNumber/value}/Area_Chairs",
+      "${4/signatures}"
+    ]
+  },
+  "confidential_comments": {
+    "value": {
+      "param": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 20000,
+        "input": "textarea",
+        "markdown": true
+      }
+    },
+    "order": 7,
+    "description": "Please provide a brief explanation of your rating, visible to the Program Committee only. Please also include any other confidential concerns such as formatting, anonymity, plagiarism, and others.",
+    "readers": [
+      "roboticsfoundation.org/RSS/2025/Conference/Program_Chairs",
+      "roboticsfoundation.org/RSS/2025/Conference/Submission${7/content/noteNumber/value}/Senior_Area_Chairs",
+      "roboticsfoundation.org/RSS/2025/Conference/Submission${7/content/noteNumber/value}/Area_Chairs",
+      "${4/signatures}"
+    ]
+  },
+  "confidence": {
+    "value": {
+      "param": {
+        "type": "integer",
+        "enum": [
+          {
+            "value": 5,
+            "description": "5: The reviewer is absolutely certain that the evaluation is correct and very familiar with the relevant literature."
+          },
+          {
+            "value": 4,
+            "description": "4: The reviewer is confident but not absolutely certain that the evaluation is correct."
+          },
+          {
+            "value": 3,
+            "description": "3: The reviewer is fairly confident that the evaluation is correct."
+          },
+          {
+            "value": 2,
+            "description": "2: The reviewer is willing to defend the evaluation, but it is quite likely that the reviewer did not understand central parts of the paper."
+          },
+          {
+            "value": 1,
+            "description": "1: The reviewer's evaluation is an educated guess."
+          }
+        ],
+        "input": "radio"
+      }
+    },
+    "order": 8,
+    "readers": [
+      "roboticsfoundation.org/RSS/2025/Conference/Program_Chairs",
+      "roboticsfoundation.org/RSS/2025/Conference/Submission${7/content/noteNumber/value}/Senior_Area_Chairs",
+      "roboticsfoundation.org/RSS/2025/Conference/Submission${7/content/noteNumber/value}/Area_Chairs",
+      "${4/signatures}"
+    ]
+  }
+}

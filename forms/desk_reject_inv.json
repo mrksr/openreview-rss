@@ -1,0 +1,141 @@
+{
+  "signatures": [
+    "roboticsfoundation.org/RSS/2025/Conference"
+  ],
+  "readers": [
+    "roboticsfoundation.org/RSS/2025/Conference"
+  ],
+  "writers": [
+    "roboticsfoundation.org/RSS/2025/Conference"
+  ],
+  "content": {
+    "noteNumber": {
+      "value": {
+        "param": {
+          "type": "integer"
+        }
+      }
+    },
+    "noteId": {
+      "value": {
+        "param": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "replacement": true,
+  "invitation": {
+    "id": "roboticsfoundation.org/RSS/2025/Conference/Submission${2/content/noteNumber/value}/-/Desk_Rejection_Recommendation",
+    "signatures": [
+      "roboticsfoundation.org/RSS/2025/Conference"
+    ],
+    "readers": [
+      "everyone"
+    ],
+    "writers": [
+      "roboticsfoundation.org/RSS/2025/Conference"
+    ],
+    "minReplies": 1,
+    "invitees": [
+      "roboticsfoundation.org/RSS/2025/Conference",
+      "roboticsfoundation.org/RSS/2025/Conference/Program_Chairs",
+      "roboticsfoundation.org/RSS/2025/Conference/Submission${3/content/noteNumber/value}/Area_Chairs",
+      "roboticsfoundation.org/RSS/2025/Conference/Submission${3/content/noteNumber/value}/Senior_Area_Chairs"
+    ],
+    "noninvitees": [],
+    "cdate": 1737666383094,
+    "process": "def process(client, edit, invitation):\n    meta_invitation = client.get_invitation(invitation.invitations[0])\n    script = meta_invitation.content['custom_stage_process_script']['value']\n    funcs = {\n        'openreview': openreview,\n        'datetime': datetime\n    }\n    exec(script, funcs)\n    funcs['process'](client, edit, invitation)\n",
+    "edit": {
+      "signatures": {
+        "param": {
+          "items": [
+            {
+              "value": "roboticsfoundation.org/RSS/2025/Conference/Program_Chairs",
+              "optional": true
+            },
+            {
+              "value": "roboticsfoundation.org/RSS/2025/Conference/Submission${7/content/noteNumber/value}/Senior_Area_Chairs",
+              "optional": true
+            },
+           {
+              "value": "roboticsfoundation.org/RSS/2025/Conference/Submission${7/content/noteNumber/value}/Area_Chairs",
+              "optional": true
+            }
+          ]
+        }
+      },
+      "readers": [
+        "${2/note/readers}"
+      ],
+      "nonreaders": [],
+      "writers": [
+        "roboticsfoundation.org/RSS/2025/Conference",
+        "${2/signatures}"
+      ],
+      "note": {
+        "id": {
+          "param": {
+            "withInvitation": "roboticsfoundation.org/RSS/2025/Conference/Submission${6/content/noteNumber/value}/-/Desk_Rejection_Recommendation",
+            "optional": true
+          }
+        },
+        "forum": "${4/content/noteId/value}",
+        "ddate": {
+          "param": {
+            "range": [
+              0,
+              9999999999999
+            ],
+            "optional": true,
+            "deletable": true
+          }
+        },
+        "signatures": [
+          "${3/signatures}"
+        ],
+        "content": {
+          "desk_reject": {
+            "value": {
+              "param": {
+                "type": "string",
+                "enum": [
+                  "I recommend this paper to be desk-rejected."
+                ],
+                "input": "checkbox"
+              }
+            },
+            "description": "Do you recommend this paper to be desk-rejected?",
+            "order": 1
+          },
+        "reason": {
+            "value": {
+              "param": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 5000,
+                "input": "textarea",
+                "markdown": true
+              }
+            },
+            "description": "Please explain why you think this paper should be desk rejected.",
+            "order": 2
+          }
+        },
+        "replyto": "${4/content/noteId/value}",
+        "readers": [
+          "roboticsfoundation.org/RSS/2025/Conference/Program_Chairs",
+          "roboticsfoundation.org/RSS/2025/Conference/Submission${5/content/noteNumber/value}/Senior_Area_Chairs",
+          "roboticsfoundation.org/RSS/2025/Conference/Submission${5/content/noteNumber/value}/Area_Chairs"
+        ],
+        "writers": [
+          "roboticsfoundation.org/RSS/2025/Conference",
+          "${3/signatures}"
+        ]
+      }
+    },
+    "duedate": 1738756800000,
+    "expdate": 1738758600000,
+    "maxReplies": 1
+  }
+}

@@ -1,0 +1,239 @@
+%!TEX root = main.tex
+\documentclass[journal, onecolumn]{IEEEtran}
+%\documentclass[12pt,journal,onecolumn]{IEEEtran}
+\input{preamble_packages.tex}
+\input{preamble_symbols.tex}
+\input{preamble_algo.tex}
+
+
+\usepackage{comment}
+\usepackage{cite}
+
+\newcommand{\point}{\vp}
+\newcommand{\points}{\vp}
+
+%\renewcommand\baselinestretch{0.96}
+
+\begin{document}
+
+ \title{\LARGE{Scheduling the RSS 2025 Area Chair Meeting \\ via Mixed-Integer Linear Programming}}
+
+\author{Luca Carlone and Lukas Schmid
+\thanks{L.\,Carlone is with the Laboratory for Information \& Decision Systems, Massachusetts Institute of Technology, Cambridge, MA, USA, 
+{\sf lcarlone@mit.edu}
+}}
+
+\newcommand{\MRij}{\bar\MR\ij}
+\newcommand{\MRijy}{\bar\MR_{ij,y}}
+\newcommand{\MRiy}{\MR_{y}(\theta_i) }
+\newcommand{\MRip}{\bar\MR_{i,p}}
+\newcommand{\MRir}{\bar\MR_{i,r}}
+\newcommand{\MRjy}{\MR_{y}(\theta_j) }
+\newcommand{\MRjp}{\bar\MR_{j,p}}
+\newcommand{\MRjr}{\bar\MR_{j,r}}
+\newcommand{\vtij}{\bar\vt\ij}
+\newcommand{\vtijy}{\bar\vt_{ij,y}}
+\newcommand{\Log}[1]{\text{Log}\left(#1\right)}
+
+\maketitle
+
+In this document we solve the problem of scheduling the sessions of the RSS 2025 Area Chair meeting as an Mixed-Integer Linear Program.
+In particular, we simultaneously compute assignments of papers and ACs to discussion sessions.
+
+\section{General Formulation}
+
+\myParagraph{Variables}
+The decision variables in this problem are the \emph{AC-to-session} assignment matrix $\MX$ and 
+the \emph{paper-to-session} assignment matrix $\MY$.  
+In particular, $\MX \in \{0,1\}^{n \times s}$, where $n$ is the number of Area Chairs (ACs) and $s$ is the number of sessions, and is such that $\MX_{ij} = 1$ if AC $i$ is assigned to session $j$.
+In our case, $n = 54$ and $s = 36$ (4 paper discussion slots in the schedule, each with 9 parallel breakouts, 8 for discussion + 1 ``standout'' breakout for ACs that cannot join any of the regular sessions).
+%
+The matrix $\MY \in \{0,1\}^{p \times s}$, where $p$ is the number of papers to discuss, is such that $\MY_{kj}$ if paper $k$ is assigned to session $j$.
+In our case, $s = 168$ (\ie we expect to discuss 6 papers in each of the 3 main discussion sessions, plus 3 in each overflow session).  
+Our problem below also computes an auxiliary variable $\MZ \in \Real{n \times s}$, that is such that $\MZ_{ij}$ is equal to the cumulative affinity score (sum of the affinity scores for all papers in that session) of AC $i$ and session $j$ if the AC is assigned to that session, or is zero otherwise.
+% if $i$ is not assigned to $j$.
+
+\myParagraph{Inputs}
+We are given an \emph{affinity} matrix $\MA \in \Real{n \times p}$, which contains the affinity of the ACs for all papers to discuss. In other words, 
+$\MA_{ik}$ is the affinity of AC $i$ with paper $k$. 
+Moreover, we are given a ``primary AC assignment'' matrix  $\MP \in \Real{n \times p}$, that is such that $\MP_{ik} = 1$ if AC $i$ is the primary handling AC for paper $k$.
+ Similarly, we are given a ``secondary AC assignment'' matrix  $\MS \in \Real{n \times p}$, that is such that $\MS_{ik} = 1$ if AC $i$ is the secondary handling AC for paper $k$.
+Finally, we are given a Conflict of Interest (COI) matrix $\MC \in \Real{n \times p}$, that is such that $\MC_{ik} = 1$ if AC $i$ is has a COI with paper $k$.
+ 
+\myParagraph{Objective} Therefore, the goal is to simultaneously compute paper-to-session assignments and AC-to-session assignments such that we maximize the affinity of ACs between papers and ACs in a session, while avoiding COIs and ensuring that when a paper is assigned to a session, then its primary and secondary ACs are in that session as well.
+
+\myParagraph{Formulation} The optimization problem computes the optimal matching can be states as follows:
+
+\begin{align}
+\max_{\substack{\MX \in \{0,1\}^{n \times s} \\  \MY \in \{0,1\}^{p \times s} \\  \MZ \in \real{n \times s}} } & \ones\tran \MZ \ones & \text{(maximize cumulative affinity score)} \nonumber \\
+\subject &  \MX \cdot \ve_{[1:9]} = \ones_n  & \text{(each AC join only 1 breakout for the 1st discussion slot)}\nonumber  \\
+         &  \MX \cdot \ve_{[10:18]} = \ones_n  & \text{(each AC join only 1 breakout for the 2nd discussion slot)} \nonumber \\
+         &  \MX \cdot \ve_{[19:27]} = \ones_n  & \text{(each AC join only 1 breakout for the 3rd discussion slot)} \nonumber \\
+         &  \MX \cdot \ve_{[28:36]} = \ones_n  & \text{(each AC join only 1 breakout for the 4th discussion slot)} \nonumber \\
+         &  (\ones\tran \cdot \MX \leq \vn_\max\tran) & \text{(optional: at most $\vn_\max$ ACs in a breakout)} \nonumber \\
+         &  (\ones\tran \cdot \MX \geq \vn_\min\tran) & \text{(optional: at least $\vn_\min$ ACs in a breakout)} \nonumber \\
+         \nonumber \\
+         &  \ones\tran \cdot \MY \leq \vp_{max}\tran  & \text{(at most 6 papers per regular session, 4 in the overflow sessions, 0 in standout)} \nonumber \\
+         &  \MY \cdot \ones  = \ones  & \text{(each paper is assigned to a unique session)} \nonumber \\
+         % &  \MY \cdot \ve_{9} = \zero  & \text{(each paper is only assigned to 1 session)} \\
+         % &  \MY \cdot \ve_{18} = \zero  & \text{(papers cannot be assigned to overflow session)} \\
+         % &  \MY \cdot \ve_{27} = \zero  & \text{(each paper is only assigned to 1 session)} \\
+         % &  \MY \cdot \ve_{36} = \zero  & \text{(papers cannot be assigned to overflow session)} \\
+         \nonumber \\
+         &  \MX \leq \ones\tran \ones - \frac{1}{p} (\MC \cdot \MY)  & \text{(avoid COIs)} \nonumber \\
+         &  \MX \geq \frac{1}{p} (\MP \cdot \MY)  & \text{(primary AC must be in session where paper is discussed)} \nonumber \\
+         &  \MX \geq \frac{1}{p} (\MS \cdot \MY)  & \text{(secondary AC must be in session where paper is discussed)} \nonumber \\
+         \nonumber \\ 
+         & \MZ \leq a_\max \MX & \text{(force affinities to zero whenever an AC $i$ is not in session $j$)} \nonumber \\
+         & \MZ \leq \MA \MY & \text{(forces an upper-bound on the affinities, which is attained when AC $i$ is in session $j$)} \nonumber 
+\end{align}
+where $\ones_n$ is the vector of length $n$ with all entries equal to one, 
+$\vp_{max} \in \Real{s}$ is a vector whose $j$-th entry is the maximum number of papers that can be discussed in breakout $j$ (this is zero for the standout breakout),
+$\vn_\max \in \Real{s}$ is a vector whose $j$-th entry is the maximum number of AC that can be in breakout $j$ (this is $n$ for the standout breakout),
+$\vn_\min \in \Real{s}$ is a vector whose $j$-th entry is the minimum number of AC that can be in breakout $j$ (this is $0$ for the standout breakout),
+$\ve_{[\vv]}$ is the vector with entries equal to $1$ for the indices in $\vv$ and zero otherwise, 
+and $a_\max$ is a constant (the maximum cumulative affinity score).
+
+Let us explain the optimization in more detail.
+The matrix $\MZ$ represents the cumulative affinity scores for each AC to all papers in a session (and is nonzero only for the sessions the AC is assigned to).
+Therefore, the objective $\ones\tran \MZ \ones$ simply sums and maximizes the cumulative affinity scores across all assignments.
+Many of the constraints are self-explanatory from the description above, so we focus on the most complex ones.
+  The constraint $\MX \leq \ones\tran \ones - \frac{1}{p} (\MC \cdot \MY)$ enforces that ACs are not assigned to sessions for which they have at least a COI.
+  In particular the matrix $\MC \cdot \MY$ is such that, the entry $i,j$ of the matrix, namely $[\MC \cdot \MY]_{ij}$, describes the number of COI AC $i$ has with session $j$ (this is at most $p$, and typically much smaller than that).
+  Therefore, whenever $[\frac{1}{p} (\MC \cdot \MY)]_{ij} > 0$, then $[\ones\tran \ones - \frac{1}{p} (\MC \cdot \MY)]_{ij} < 1$ and the corresponding entry of $\MX$ is forced to zero.
+For constraint $\MX \geq \frac{1}{p} (\MP \cdot \MY)$, the matrix $\MP \cdot \MY$ is such that, the entry $i,j$ of the matrix, namely $[\MP \cdot \MY]_{ij}$, describes the number of papers AC $i$ is the primary AC for in session $j$ (this is at most $p$, and typically much smaller than that). 
+Therefore, whenever $[\frac{1}{p} (\MC \cdot \MY)]_{ij} > 0$, the corresponding entry of $\MX$ is forced to be one (meaning that the AC is forced to join that session).
+Together, the last two constraints are the same as $\MZ \leq \min(a_\max \MX,\MA \MY)$ (where the minimum is computed entry-wise), which forces $\MZ_{ij}=0$   whenever $\MX_{ij}=0$ (\ie we don't count affinities when an AC is not assigned to a session), and $\MZ_{ij} = [\MA \MY]_{ij}$ when $\MX_{ij}=1$ (recall that $a_\max \gg [\MA \MY]_{ij}$ for any $i$ and $j$). 
+
+In Matlab's {\tt intlinprog}, the decision variable must be a vector, in our case $\vxx = [\text{vec}(\MX) \; \text{vec}(\MY) \; \text{vec}(\MZ)]$, hence we rewrite the previous problem as:
+
+\newcommand{\myQuad}{\qquad}
+\begin{align}
+\max_{\vxx \in \{0,1\}^{2 ns + ps}} & \ones_{ns}\tran \cdot \ME_\MZ \cdot \vxx  \myQuad \text{(maximize cumulative affinity score)} \nonumber \\
+\subject &  (\ve_{[1:9]}\tran \kron \eye_n) \cdot \ME_\MX \cdot \vxx = \ones_n  \myQuad \text{(each AC join only 1 breakout for the 1st discussion slot)}\nonumber  \\
+         &  (\ve_{[10:18]}\tran \kron \eye_n) \cdot \ME_\MX \cdot \vxx = \ones_n   \myQuad \text{(each AC join only 1 breakout for the 2nd discussion slot)} \nonumber \\
+         &  (\ve_{[19:27]}\tran \kron \eye_n) \cdot \ME_\MX \cdot \vxx = \ones_n  \myQuad \text{(each AC join only 1 breakout for the 3rd discussion slot)} \nonumber \\
+         & (\ve_{[28:36]}\tran \kron \eye_n) \cdot \ME_\MX \cdot \vxx = \ones_n  \myQuad \text{(each AC join only 1 breakout for the 4th discussion slot)} \nonumber \\
+         &  (\eye_s \kron \ones_n\tran)  \cdot \ME_{\MX} \cdot \vxx \leq \vn_\max) \myQuad \text{(optional: at most $\vn_\max$ ACs in a breakout)} \nonumber \\
+         &  (\eye_s \kron \ones_n\tran) \cdot \ME_{\MX} \cdot \vxx  \geq \vn_\min) \myQuad \text{(optional: at least $\vn_\min$ ACs in a breakout)} \nonumber \\
+         \nonumber \\
+         & (\eye_s \kron \ones_p\tran ) \cdot \ME_{\MY} \cdot \vxx \leq \vp_{max}  \myQuad \text{(at most 6 papers per session, 4 in the overflow sessions, 0 in standout)} \nonumber \\
+         & (\ones_{s}\tran \kron \eye_p) \cdot \ME_{\MY} \cdot \vxx  = \ones_p  \myQuad \text{(each paper is assigned to a unique session)} \nonumber \\
+         \nonumber \\
+         &  \ME_\MX \cdot \vxx \leq \ones_{ns} - \frac{1}{p} (\eye_s \kron \MC) \cdot \ME_{\MY} \cdot \vxx  \myQuad \text{(avoid COIs)} \nonumber \\
+         &  \ME_\MX \cdot \vxx \geq \frac{1}{p} (\eye_s \kron \MP) \cdot \ME_{\MY} \cdot  \vxx  \myQuad \text{(primary AC must be in session where paper is discussed)} \nonumber \\
+         &  \ME_\MX \cdot \vxx \geq \frac{1}{p} (\eye_s \kron \MS) \cdot \ME_{\MY} \cdot \vxx \myQuad \text{(secondary AC must be in session where paper is discussed)} \nonumber \\
+         \nonumber \\ 
+         & \ME_\MZ \cdot \vxx  \leq a_\max \cdot \ME_\MX \cdot \vxx \myQuad \text{(force affinities to zero whenever an AC $i$ is not in session $j$)} \nonumber \\
+         & \ME_\MZ \cdot \vxx \leq (\eye_s \kron \MA) \cdot \ME_\MY \cdot \vxx  \myQuad \text{(forces an upper-bound on the affinities, which is attained when AC $i$ is in session $j$)} \nonumber 
+\end{align}
+where $\va = \text{vec}(\MA)$ (column-wise vectorization), $\eye_n$ is the identity matrix of size $n$, and we used the property 
+that for two matrices $\MF \in \Real{a \times b}$ and $\MG \in \Real{b \times c}$ it holds $\text{vec}(\MF \cdot \MG) =  (\MG\tran \kron \eye_a) \cdot \text{vec}(\MF) = 
+(\eye_c \kron \MF) \cdot \text{vec}(\MG)$. 
+Moreover, we defined the selection matrices $\ME_\MX = [\eye_{ns} \;\; \zero_{ns,ps} \;\; \zero_{ns,ns}]$, $\ME_\MY  = [\zero_{ps,ns} \;\; \eye_{ps} \;\; \zero_{ps,ns}]$, and   $\ME_\MZ = [\zero_{ns,ns} \;\; \zero_{ns,ps} \;\; \eye_{ns}]$ that select the entries corresponding to $\MX$, $\MY$, and $\MZ$ from $\vxx$, respectively.
+
+\myParagraph{Adding Senior Area Chairs} Senior Area Chairs have to satisfy similar constraints as the ACs, but have to satisfy the additional constraint that 
+each AC has to staff a different breakout and none of them should be in a standout breakout.
+Assuming the Senior AC are listed as the last $n_{\text{sac}}$ rows of $\MX$, these constraints can be written as follows:
+\begin{align}
+\ve_{[\text{end}-n_{\text{sac}}:\text{end}]}\tran \cdot \MX = \vs_{\text{sac}}\tran
+\end{align}
+where $\vs_{\text{sac}}$ is $1$ for the regular sessions and zero for the standout sessions.
+After vectorization, this constraint becomes:
+\begin{align}
+(\eye_s \kron \ve_{[\text{end}-n_{\text{sac}}:\text{end}]}\tran) \cdot \ME_\MX \cdot \vxx = \vs_{\text{sac}}
+\end{align}
+
+% \myParagraph{Maximizing the Minimum Affinity instead of the Cumulative Affinity} %% this is currently incorrect, since the extra variable is always zero
+% In this case, we want to maximize the minimum of $\MZ$ instead of the sum of its entries.
+% We can do so, by adding an extra variable at the end of $\vxx$, and then maximize it in the objective while forcing:
+% \begin{align}
+% \vxx_{[end]} \cdot \ones_{ns} \leq \ME_\MZ \cdot \vxx  \iff [\zero \;\; \ones_{ns}] \vxx \leq \ME_\MZ \cdot \vxx
+% \end{align}
+% which enforces the extra variable to match the smallest entry of $\MZ$.
+
+
+% ===================================================================
+\section{Secondary AC Assignment Problem}
+
+Now we tackle a related problem, where we want to assign a secondary AC to each paper. This is typically done \emph{before} creating the sessions as described above. We formulate the problem as follows:
+\begin{align}
+\max_{\substack{\MS \in \{0,1\}^{n \times p} \\ \MZ \in \{0,1\}^{n \times p} } } & \ones\tran \cdot \MZ \cdot \ones & \text{(maximize cumulative affinity score)} \nonumber \\
+\subject & \MS \cdot \ones_p  \leq p_{\max,2} \cdot \ones_n\tran & \text{(at most $p_{\max,2}$ assignments per AC)} \nonumber \\
+         &  \ones_n\tran \cdot \MS  = \ones_p  & \text{(exactly 1 secondary AC per paper)} \nonumber \\
+         \nonumber \\
+         &  \MS \leq \ones\tran \ones - \MP  & \text{(primary ACs cannot be secondary ACs for the same paper)} \nonumber \\
+         &  \MS \leq \ones\tran \ones - \MC  & \text{(avoid COI)} \nonumber \\
+         \nonumber \\ 
+         & \MZ \leq a_\max \MS & \text{(force $\MZ$ to zero outside assignments)} \nonumber \\
+         & \MZ \leq \MA & \text{(force upper-bound on $\MZ$ using the affinities)} \nonumber 
+\end{align}
+After reformulating the problem in terms of $\vxx = [\text{vec}(\MS) \; \text{vec}(\MZ)]$:
+\begin{align}
+\max_{\vxx \in \{0,1\}^{2 np}} & \ones_{np}\tran \cdot \ME_\MZ \cdot \vxx  \myQuad \text{(maximize cumulative affinity score)} \nonumber \\
+\subject &  (\ones_p\tran \kron \eye_n) \cdot \ME_\MS \cdot \vxx \leq p_{\max,2} \cdot \ones_n & \text{(at most $p_{\max,2}$ assignments per AC)} \nonumber \\
+         &  (\eye_p \kron \ones_n\tran)  \cdot \ME_\MS \cdot \vxx = \ones_p  & \text{(exactly 1 secondary AC per paper)} \nonumber \\
+         \nonumber \\
+         &  \ME_\MS \cdot \vxx \leq \text{vec}(\ones\tran \ones - \MP)  & \text{(primary ACs cannot be secondary ACs for the same paper)} \nonumber \\
+         &  \ME_\MS \cdot \vxx \leq \text{vec}(\ones\tran \ones - \MC)  & \text{(avoid COI)} \nonumber \\
+         \nonumber \\ 
+         & \ME_\MZ \cdot \vxx \leq a_\max \ME_\MS \cdot \vxx & \text{(force $\MZ$ to zero outside assignments)} \nonumber \\
+         & \ME_\MZ \cdot \vxx \leq \text{vec}(\MA) & \text{(force upper-bound on $\MZ$ using the affinities)} \nonumber 
+\end{align}
+where we used again the property of vectorization $\text{vec}(\MF \cdot \MG) =  (\MG\tran \kron \eye_a) \cdot \text{vec}(\MF) = 
+(\eye_c \kron \MF) \cdot \text{vec}(\MG)$ for two matrices $\MF \in \Real{a \times b}$ and $\MG \in \Real{b \times c}$.
+Moreover, we defined the selection matrices $\ME_\MS = [\eye_{np} \;\; \zero_{np,np}]$ and $\ME_\MZ = [\zero_{np} \;\; \eye_{np,np}]$ that select the entries corresponding to $\MS$ and $\MZ$ from $\vxx$, respectively.
+
+% The decision variable in this problem is $\MX \in \{0,1\}^{n \times m}$, where $n$ is the number of Area Chairs (ACs) and $m$ is the number of sessions.
+% In our case, $n = 54$ and $m = 33$ (4 paper discussion slots, each with 8 parallel breakouts + 1 ``standout'' session for ACs that cannot join any of the regular sessions).
+% In particular $\MX_{ij} = 1$ if AC $i$ joins session $j$.
+% %
+% We are also given a matrix $\MA \in \Real{n \times m}$, which contains the affinity of each AC versus each session. In other words, 
+% $\MA_{ij}$ is the affinity of AC $i$ for session $j$ (in practice this is computed as the average affinity over all the papers in the session, which should be thematically similar). The last column of $\MA$ is all zeros, meaning that there is no incentive for an AC to join the ``standout'' session. 
+% Moreover, for the ACs that have a Conflict of Interest (COI) with at least a paper in that session, we set the corresponding entry of $\MA$ to $-\infty$ such that the optimization will never pick such an option.
+% % 
+% Therefore, the goal is to find the matching of ACs to sessions that maximizes the affinity scores, while satisfying constraints (\eg avoid COI, an AC can join one session at a time, etc.). 
+
+% Next, we state the optimization problem that will compute the optimal matching:
+
+% \begin{align}
+% \max_{\MX \in \{0,1\}^{n \times m}} & \ones\tran (\MA \odot \MX) \ones & \text{(maximize cumulative affinity score)} \\
+% \subject &  \MX \cdot \ve_{1:8} \leq \ones  & \text{(join only 1 of 8 breakouts for the 1st discussion slot)} \\
+%          &  \MX \cdot \ve_{9:16} \leq \ones  & \text{(join only 1 of 8 breakouts for the 2nd discussion slot)} \\
+%          &  \MX \cdot \ve_{16:24} \leq \ones  & \text{(join only 1 of 8 breakouts for the 3rd discussion slot)} \\
+%          &  \MX \cdot \ve_{25:32} \leq \ones  & \text{(join only 1 of 8 breakouts for the 4th discussion slot)} \\
+%          &  \ones\tran \MX = n \ones\tran & \text{(all ACs should join at least one session)} \\
+% \end{align}
+% where $\odot$ is the Hadamard (\ie element-wise) product, $\ones$ is the vector with all entries equal to one, 
+% $\ve_{a:b}$ is the vector with entries from $a$ to $b$ equal to $1$ and zero otherwise.
+
+% In Matlab's {\tt intlinprog}, the decision variable must be a vector, hence we rewrite the previous problem as:
+
+% \begin{align}
+% \max_{\vxx \in \{0,1\}^{nm}} & \va\tran \cdot \vxx  & \text{(maximize cumulative affinity score)} \\
+% \subject &  (\ve_{1:8}\tran \kron \eye_n) \cdot \vxx \leq \ones  & \text{(join only 1 of 8 breakouts for the 1st discussion slot)} \\
+%          &  (\ve_{9:16}\tran \kron \eye_n) \cdot \vxx \leq \ones  & \text{(join only 1 of 8 breakouts for the 2nd discussion slot)} \\
+%          &  (\ve_{17:24}\tran \kron \eye_n) \cdot \vxx \leq \ones  & \text{(join only 1 of 8 breakouts for the 3rd discussion slot)} \\
+%          &  (\ve_{25:32}\tran \kron \eye_n) \cdot \vxx \leq \ones  & \text{(join only 1 of 8 breakouts for the 4th discussion slot)} \\
+%          &  (\ones\tran \kron \eye_m) \cdot \vxx = n \ones & \text{(all ACs should join at least one session)} \\
+% \end{align}
+% where $\va = \text{vec}(\MA)$ (column-wise vectorization), $\eye_n$ is the identity matrix of size $n$, and we used the property 
+% that for two matrices $\MF$ and $\MG$ it holds $\text{vec}(\MF \cdot \MG) =  (\MG\tran \kron \eye_n) \cdot \text{vec}(\MF) = 
+% (\eye_n \kron \MF) \cdot \text{vec}(\MG)$.
+
+
+% assign papers to sessions
+
+% AC and secondary AC for a paper must be in that session
+
+% sessions must be balanced in terms of number of ACs
+
+% \bibliographystyle{unsrt}
+% \bibliography{/Users/lucacarlone/Desktop/myPapers/references/refs.bib} 
+
+% that's all folks
+
+
+\end{document}
+
+

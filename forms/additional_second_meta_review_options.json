@@ -1,0 +1,141 @@
+{
+  "metareview": {
+    "delete": true
+  },
+  "overall_recommendation": {
+    "value": {
+      "param": {
+        "type": "string",
+        "enum": [
+          {
+            "value": "Strong Accept",
+            "description": "Strong Accept (SA): This is a very strong paper, I will fight for its acceptance."
+          },
+          {
+            "value": "Accept",
+            "description": "Accept (A): This is a strong paper that should be accepted."
+          },
+          {
+            "value": "Weak Accept",
+            "description": "Weak Accept (WA): My opinion on this paper could be swayed, but I am leaning accept."
+          },
+          {
+            "value": "Weak Reject",
+            "description": "Weak Reject (WR): My opinion on this paper could be swayed, but I am leaning reject."
+          },
+          {
+            "value": "Reject",
+            "description": "Reject (R): This is not a strong paper that should be rejected."
+          },
+          {
+            "value": "Strong Reject",
+            "description": "Strong Reject (SR): The paper is trivial, known, or wrong, I will fight for its rejection."
+          }
+        ],
+        "input": "radio"
+      }
+    },
+    "order": 1,
+    "description": "Considering the initial comments and the rebuttal submitted by the authors, you can update your overall recommendation. This will be visible to authors after the final decision.",
+    "readers": [
+      "roboticsfoundation.org/RSS/2025/Conference/Program_Chairs",
+      "roboticsfoundation.org/RSS/2025/Conference/Submission${7/content/noteNumber/value}/Senior_Area_Chairs",
+      "roboticsfoundation.org/RSS/2025/Conference/Submission${7/content/noteNumber/value}/Area_Chairs"
+    ]
+  },
+  "award_candidate": {
+    "value": {
+      "param": {
+        "type": "string",
+        "enum": [
+          {
+            "value": "Yes",
+            "description": "Yes"
+          },
+          {
+            "value": "Maybe",
+            "description": "Maybe"
+          },
+          {
+            "value": "No",
+            "description": "No"
+          }
+        ],
+        "input": "radio"
+      }
+    },
+    "order": 2,
+    "description": "Should we consider this submission as a finalist for a best paper, best systems paper, best demo or best student submission?",
+    "readers": [
+      "roboticsfoundation.org/RSS/2025/Conference/Program_Chairs",
+      "roboticsfoundation.org/RSS/2025/Conference/Submission${7/content/noteNumber/value}/Senior_Area_Chairs",
+      "roboticsfoundation.org/RSS/2025/Conference/Submission${7/content/noteNumber/value}/Area_Chairs"
+    ]
+  },
+  "justification_of_recommendation": {
+    "value": {
+      "param": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 20000,
+        "input": "textarea",
+        "markdown": true
+      }
+    },
+    "order": 3,
+    "description": "Please provide a brief justification of your final overall recommendation. This will be visible to the authors after the final decision.",
+    "readers": [
+      "roboticsfoundation.org/RSS/2025/Conference/Program_Chairs",
+      "roboticsfoundation.org/RSS/2025/Conference/Submission${7/content/noteNumber/value}/Senior_Area_Chairs",
+      "roboticsfoundation.org/RSS/2025/Conference/Submission${7/content/noteNumber/value}/Area_Chairs"
+    ]
+  },
+  "suggested_decision": {
+    "value": {
+      "param": {
+        "type": "string",
+        "enum": [
+          {
+            "value": "Accept",
+            "description": "Accept: This paper should be accepted."
+          },
+          {
+            "value": "Discuss",
+            "description": "Discuss: This paper is borderline and should be discussed during the Area Chair meeting."
+          },
+          {
+            "value": "Reject",
+            "description": "Reject: This paper should be rejected."
+          }
+        ],
+        "input": "radio"
+      }
+    },
+    "order": 4,
+    "description": "Given the reviews, rebuttal, and your updated evaluation, what is your suggested decision for this paper? Papers marked “Discuss” will be prioritized for discussion during the AC meeting, but the selection of papers to discuss will also depend on other considerations, e.g., available time and program-related constraints. Papers marked with “Accept” or “Reject” might not be discussed during the area chair meeting, and the AC decision might be considered final, so make these decisions carefully. The suggested decision will not be visible to the authors.",
+    "readers": [
+      "roboticsfoundation.org/RSS/2025/Conference/Program_Chairs",
+      "roboticsfoundation.org/RSS/2025/Conference/Submission${7/content/noteNumber/value}/Senior_Area_Chairs",
+      "roboticsfoundation.org/RSS/2025/Conference/Submission${7/content/noteNumber/value}/Area_Chairs"
+    ]
+  },
+  "confidential_comments": {
+    "value": {
+      "param": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 20000,
+        "input": "textarea",
+        "markdown": true,
+        "optional": true
+      }
+    },
+    "order": 5,
+    "description": "Please provide a brief explanation of your rating, visible to the Program Committee only. Please also include any other confidential concerns such as formatting, anonymity, plagiarism, and others.",
+    "readers": [
+      "roboticsfoundation.org/RSS/2025/Conference/Program_Chairs",
+      "roboticsfoundation.org/RSS/2025/Conference/Submission${7/content/noteNumber/value}/Senior_Area_Chairs",
+      "roboticsfoundation.org/RSS/2025/Conference/Submission${7/content/noteNumber/value}/Area_Chairs"
+    ]
+  }
+}

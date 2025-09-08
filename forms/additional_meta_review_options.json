@@ -1,0 +1,207 @@
+{
+  "metareview": {
+    "delete": true
+  },
+  "paper_summary": {
+    "value": {
+      "param": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 20000,
+        "input": "textarea",
+        "markdown": true
+      }
+    },
+    "order": 1,
+    "description": "In a few sentences, summarize the main point of the paper. All text has a maximum of 200000 characters and supports formatting using Markdown and formulas using LaTeX. For more information see https://openreview.net/faq."
+  },
+  "paper_strengths": {
+    "value": {
+      "param": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 20000,
+        "input": "textarea",
+        "markdown": true
+      }
+    },
+    "order": 2,
+    "description": "Summarize the main strengths of the paper. Consider aspects such as lessons learned and impact to the community, significance of theoretical or experimental results or demonstrations, soundness and novelty of methods, appropriate coverage of related work, clarity of presentation."
+  },
+  "major_weaknesses": {
+    "value": {
+      "param": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 20000,
+        "input": "textarea",
+        "markdown": true
+      }
+    },
+    "order": 3,
+    "description": "Summarize the main concerns that you think could justify a rejection. Consider aspects such as technical errors (in the proofs, experiments, etc.), misleading claims, lack of clarity, novelty, evaluations, or incomplete literature review."
+  },
+  "overall_recommendation": {
+    "value": {
+      "param": {
+        "type": "string",
+        "enum": [
+          {
+            "value": "Strong Accept",
+            "description": "Strong Accept (SA): This is a very strong paper, I will fight for its acceptance."
+          },
+          {
+            "value": "Accept",
+            "description": "Accept (A): This is a strong paper that should be accepted."
+          },
+          {
+            "value": "Weak Accept",
+            "description": "Weak Accept (WA): My opinion on this paper could be swayed, but I am leaning accept."
+          },
+          {
+            "value": "Weak Reject",
+            "description": "Weak Reject (WR): My opinion on this paper could be swayed, but I am leaning reject."
+          },
+          {
+            "value": "Reject",
+            "description": "Reject (R): This is not a strong paper that should be rejected."
+          },
+          {
+            "value": "Strong Reject",
+            "description": "Strong Reject (SR): The paper is trivial, known, or wrong, I will fight for its rejection."
+          }
+        ],
+        "input": "radio"
+      }
+    },
+    "order": 4,
+    "description": "Considering the above comments, indicate your  overall recommendation. This will be visible to authors after the final decision.",
+    "readers": [
+      "roboticsfoundation.org/RSS/2025/Conference/Program_Chairs",
+      "roboticsfoundation.org/RSS/2025/Conference/Submission${7/content/noteNumber/value}/Senior_Area_Chairs",
+      "roboticsfoundation.org/RSS/2025/Conference/Submission${7/content/noteNumber/value}/Area_Chairs",
+      "${4/signatures}"
+    ]
+  },
+  "requested_changes_and_specific_questions_for_authors": {
+    "value": {
+      "param": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 20000,
+        "input": "textarea",
+        "markdown": true
+      }
+    },
+    "order": 5,
+    "description": "If the authors provide a rebuttal, which points should they clarify? Make sure to cover all clarifications and questions that can help the program committee decide whether this paper can be accepted."
+  },
+  "nature_of_contribution": {
+    "value": {
+      "param": {
+        "type": "string",
+        "enum": [
+          {
+            "value": "Science Paper"
+          },
+          {
+            "value": "Systems Paper"
+          },
+          {
+            "value": "Demo"
+          }
+        ],
+        "input": "select"
+      }
+    },
+    "order": 6,
+    "description": "If this is a regular paper, do you perceive its primary intended contribution to be that of a science or a systems paper? If this is a demo submission, do you consider the choice of a demo submission to be appropriate?"
+  },
+  "award_candidate": {
+    "value": {
+      "param": {
+        "type": "string",
+        "enum": [
+          {
+            "value": "Yes",
+            "description": "Yes"
+          },
+          {
+            "value": "Maybe",
+            "description": "Maybe"
+          },
+          {
+            "value": "No",
+            "description": "No"
+          }
+        ],
+        "input": "radio"
+      }
+    },
+    "order": 7,
+    "description": "Should we consider this submission as a finalist for a best paper, best systems paper, best demo or best student submission?",
+    "readers": [
+      "roboticsfoundation.org/RSS/2025/Conference/Program_Chairs",
+      "roboticsfoundation.org/RSS/2025/Conference/Submission${7/content/noteNumber/value}/Senior_Area_Chairs",
+      "roboticsfoundation.org/RSS/2025/Conference/Submission${7/content/noteNumber/value}/Area_Chairs",
+      "${4/signatures}"
+    ]
+  },
+  "confidential_comments": {
+    "value": {
+      "param": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 20000,
+        "input": "textarea",
+        "markdown": true,
+        "optional": true
+      }
+    },
+    "order": 8,
+    "description": "Please provide a brief explanation of your rating, visible to the Program Committee only. Please also include any other confidential concerns such as formatting, anonymity, plagiarism, and others.",
+    "readers": [
+      "roboticsfoundation.org/RSS/2025/Conference/Program_Chairs",
+      "roboticsfoundation.org/RSS/2025/Conference/Submission${7/content/noteNumber/value}/Senior_Area_Chairs",
+      "roboticsfoundation.org/RSS/2025/Conference/Submission${7/content/noteNumber/value}/Area_Chairs",
+      "${4/signatures}"
+    ]
+  },
+  "confidence": {
+    "value": {
+      "param": {
+        "type": "integer",
+        "enum": [
+          {
+            "value": 5,
+            "description": "5: The area chair is absolutely certain that the evaluation is correct and very familiar with the relevant literature."
+          },
+          {
+            "value": 4,
+            "description": "4: The area chair is confident but not absolutely certain that the evaluation is correct."
+          },
+          {
+            "value": 3,
+            "description": "3: The area chair is fairly confident that the evaluation is correct."
+          },
+          {
+            "value": 2,
+            "description": "2: The area chair is willing to defend the evaluation, but it is quite likely that the area chair did not understand central parts of the paper."
+          },
+          {
+            "value": 1,
+            "description": "1: The area chair's evaluation is an educated guess."
+          }
+        ],
+        "input": "radio"
+      }
+    },
+    "order": 9,
+    "readers": [
+      "roboticsfoundation.org/RSS/2025/Conference/Program_Chairs",
+      "roboticsfoundation.org/RSS/2025/Conference/Submission${7/content/noteNumber/value}/Senior_Area_Chairs",
+      "roboticsfoundation.org/RSS/2025/Conference/Submission${7/content/noteNumber/value}/Area_Chairs",
+      "${4/signatures}"
+    ]
+  }
+}

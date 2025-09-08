@@ -1,0 +1,27 @@
+Congratulations on the acceptance of your paper and thank you for submitting the final camera ready version! Recall that, by uploading your camera ready version, you are retaining copyright, but granting the RSS Foundation the right to distribute this document and archive it at roboticsproceedings.org.
+
+RSS has a specific way to showcase accepted papers at the conference. Below we are listing detailed instructions for presenting your paper at the conference. All authors must adhere to these instructions otherwise, they risk their paper being removed from the conference program and proceedings. 
+
+Specifically, all accepted RSS papers will be highlighted during the conference via both a 4.5-minute-long spotlight talk and traditional paper posters. Please read this email in its entirety for all instructions.
+
+(1) **Spotlight presentations.** Each accepted paper (including both Science/Systems papers and Demo papers) will be allocated a spotlight talk. Talks must be up to 4.5 minutes long (i.e. strictly up to 270 seconds), followed by 1.5 minutes of Q&A per paper. The video of your presentation must be uploaded by **Friday, May 30, 2025** - see detailed instructions below.
+
+To ensure that the presentations go smoothly and following the RSS tradition, we ask all presenters to submit a video of their presentation in advance. The presenters will be speaking live while the presentation recording will be playing in the background as a video. For this reason, the presenters are asked not to record sound as part of the presentations, except possibly for videos where the sound is useful to understand the experiment. Please rehearse your talk before setting up the slideshow timing, as you will not be able to change the timing once your presentation is submitted. You can record a movie from a self-advancing slideshow in PowerPoint and Keynote, and then export as QuickTime and convert to MPEG-4 using Handbrake (https://handbrake.fr/). Considering that the presentations are followed by a short Q&A, it is recommended that you add a final summary slide that can be shown during the 1.5 minutes of the Q&A. 
+
+Presentation videos should be submitted using the following form: https://forms.gle/JcyHrQ94XTLat19x8
+
+All videos must conform to the following guidelines:
+* Duration: No longer than 4.5 minutes (270 seconds)
+* Resolution: 1920x1080 pixels (1080p)
+* Format: MPEG-4. We recommend encoding in Handbrake (https://handbrake.fr/) with Universal encoding
+* Naming: PaperX.m4v where X is the number of your paper in OpenReview
+Due date (hard deadline): **Friday, May 30, 2025**
+
+(2) **Paper posters.** Authors of accepted papers (including both Science/Systems papers and Demo papers) will also present a poster related to their paper during a 1.5h poster session that will take place on the same day as their talk. In particular, speakers of morning talks will present at the poster session during the lunch break, while afternoon talks will be featured at the poster session during dinner. In addition to presenting their poster, authors of Demo papers will be contacted by the RSS organizers to discuss the logistics of the corresponding demonstration. All authors are encouraged to set up their posters during the first break of the day of their talk and remove them after the end of the day (in other words, posters can stay up for the entire day, even though the authors only have to staff them for 1.5 hours). An overview of the schedule is given here: https://roboticsconference.org/program/overview/. 
+
+Poster panels are 3ft x 7ft (https://roboticsconference.org/information/presentationInstructions/). Each panel has a firm surface and is best suited to command adhesive strips for paper media or small picture nails for heavier media. We will provide adhesive strips for attachment. Each panel will accommodate two posters (one on each side). This means that each presenter has access to 3ft x 7ft of space to display their poster. The poster can be of any size as long as it fits on the poster panel. Please note that power is not available at the posters, and there are no tables or other furniture nearby on which a laptop or other devices may be placed to aid with the presentation. The conference does not provide printing services for posters. A FedEx Office Print & Ship Center on USC Campus (https://local.fedex.com/en-us/ca/los-angeles/office-5261) is available, should you need to print the posters locally.
+
+Let us know if you have questions or concerns, and see you in LA!
+
+All the best,
+RSS 2025 Program Committee

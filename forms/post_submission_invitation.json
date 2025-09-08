@@ -1,0 +1,86 @@
+{
+  "signatures": [
+    "roboticsfoundation.org/RSS/2025/Conference"
+  ],
+  "readers": [
+    "roboticsfoundation.org/RSS/2025/Conference",
+    "roboticsfoundation.org/RSS/2025/Conference/Submission${{2/note/id}/number}/Authors"
+  ],
+  "writers": [
+    "roboticsfoundation.org/RSS/2025/Conference"
+  ],
+  "note": {
+    "id": {
+      "param": {
+        "withInvitation": "roboticsfoundation.org/RSS/2025/Conference/-/Submission",
+        "optional": true
+      }
+    },
+    "odate": {
+      "param": {
+        "range": [
+          0,
+          9999999999999
+        ],
+        "optional": true,
+        "deletable": true
+      }
+    },
+    "signatures": [
+      "roboticsfoundation.org/RSS/2025/Conference/Submission${{2/id}/number}/Authors"
+    ],
+    "readers": [
+      "roboticsfoundation.org/RSS/2025/Conference",
+      "roboticsfoundation.org/RSS/2025/Conference/Senior_Area_Chairs",
+      "roboticsfoundation.org/RSS/2025/Conference/Area_Chairs",
+      "roboticsfoundation.org/RSS/2025/Conference/Submission${{2/id}/number}/Authors"
+    ],
+    "writers": [
+      "roboticsfoundation.org/RSS/2025/Conference",
+      "roboticsfoundation.org/RSS/2025/Conference/Submission${{2/id}/number}/Authors"
+    ],
+    "content": {
+      "authors": {
+        "readers": [
+          "roboticsfoundation.org/RSS/2025/Conference",
+          "roboticsfoundation.org/RSS/2025/Conference/Submission${{4/id}/number}/Senior_Area_Chairs",
+          "roboticsfoundation.org/RSS/2025/Conference/Submission${{4/id}/number}/Authors"
+        ]
+      },
+      "authorids": {
+        "readers": [
+          "roboticsfoundation.org/RSS/2025/Conference",
+          "roboticsfoundation.org/RSS/2025/Conference/Submission${{4/id}/number}/Senior_Area_Chairs",
+          "roboticsfoundation.org/RSS/2025/Conference/Submission${{4/id}/number}/Authors"
+        ]
+      },
+      "_bibtex": {
+        "value": {
+          "param": {
+            "type": "string",
+            "maxLength": 200000,
+            "input": "textarea",
+            "optional": true,
+            "deletable": true
+          }
+        }
+      },
+      "pdf": {
+        "readers": [
+          "roboticsfoundation.org/RSS/2025/Conference",
+          "roboticsfoundation.org/RSS/2025/Conference/Submission${{4/id}/number}/Senior_Area_Chairs",
+          "roboticsfoundation.org/RSS/2025/Conference/Submission${{4/id}/number}/Area_Chairs",
+          "roboticsfoundation.org/RSS/2025/Conference/Submission${{4/id}/number}/Authors"
+        ]
+      },
+      "supplementary_material": {
+        "readers": [
+          "roboticsfoundation.org/RSS/2025/Conference",
+          "roboticsfoundation.org/RSS/2025/Conference/Submission${{4/id}/number}/Senior_Area_Chairs",
+          "roboticsfoundation.org/RSS/2025/Conference/Submission${{4/id}/number}/Area_Chairs",
+          "roboticsfoundation.org/RSS/2025/Conference/Submission${{4/id}/number}/Authors"
+        ]
+      }
+    }
+  }
+}
