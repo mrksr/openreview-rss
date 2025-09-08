@@ -2,12 +2,17 @@
 Python Scripts for OpenReview for RSS 2025.
 
 ## Table of Contents
+- [**Important Disclaimers**](#️-important-disclaimers)
 - [**Setup**](#setup)
 - [**Running Scripts**](#running-scripts)
-    - [Important Disclaimers](#️-important-disclaimers)
-    - [Using the Repository](#using-the-repository)
-
 - [**Credits**](#credits)
+
+## ⚠️ **Important Disclaimers** 
+- These scripts were developed for RSS 2025 and certain file formats (e.g., the committee worksheets etc) that may be specific to RSS 2025.
+- The scripts were designed for `openreview-py` `v1.51.2`. Changes in functionality may have occured since then (and already occured during development).
+- Many of the scripts **execute actions directly on OpenReview**. While we tried to safeguard sensitive actions always carefully check the scripts you want to run before running, as they may execute **sensitive actions** such as desk rejects or emailing all authors etc.
+- Conferences are hectic and many of the scripts perform individual actions and may have been alterated and reworked during development. While we hope they help we do currently not actively maintain the repository.
+- As program chair, the credentials of your account will have **super user** power and have access to essentially all and potentially **confidential data**. These scripts will also have that access and power, so make sure no confidential data is made visible or is shared before running.
 
 ## Setup
 
@@ -27,17 +32,8 @@ Python Scripts for OpenReview for RSS 2025.
     { "username": "???",
       "password": "???" }
     ```
-
+    
 ## Running Scripts
-
-### ⚠️ **Important Disclaimers** 
-- These scripts were developed for RSS 2025 and certain file formats (e.g., the committee worksheets etc) that may be specific to RSS 2025.
-- The scripts were designed for `openreview-py` `v1.51.2`. Changes in functionality may have occured since then (and already occured during development).
-- Many of the scripts **execute actions directly on OpenReview**. While we tried to safeguard sensitive actions always carefully check the scripts you want to run before running, as they may execute **sensitive actions** such as desk rejects or emailing all authors etc.
-- Conferences are hectic and many of the scripts perform individual actions and may have been alterated and reworked during development. While we hope they help we do currently not actively maintain the repository.
-- As program chair, the credentials of your account will have **super user** power and have access to essentially all and potentially **confidential data**. These scripts will also have that access and power, so make sure no confidential data is made visible or is shared before running.
-
-### Using the Repository 
 Please read the disclaimers above first and use at your own risk :)
 
 The scripts are designed to execute individual actions that are useful over the couse of a conference. The repository is structured into the following directories:
