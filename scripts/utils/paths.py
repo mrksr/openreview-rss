@@ -1,7 +1,7 @@
 import git
 
-VENUE = "roboticsfoundation.org/RSS/2025/Conference"
-TEST_VENUE = "roboticsfoundation.org/RSS/2025/Test"
+VENUE = "roboticsfoundation.org/RSS/2027/Conference"
+TEST_VENUE = "RSS/2027/Test"
 
 
 def get_root_dir():

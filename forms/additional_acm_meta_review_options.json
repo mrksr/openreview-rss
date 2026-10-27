@@ -38,9 +38,9 @@
     "order": 1,
     "description": "After discussion in the Area Chair Meeting, what is your final recommendation for this paper?",
     "readers": [
-      "roboticsfoundation.org/RSS/2025/Conference/Program_Chairs",
-      "roboticsfoundation.org/RSS/2025/Conference/Submission${7/content/noteNumber/value}/Senior_Area_Chairs",
-      "roboticsfoundation.org/RSS/2025/Conference/Submission${7/content/noteNumber/value}/Area_Chairs"
+      "roboticsfoundation.org/RSS/2027/Conference/Program_Chairs",
+      "roboticsfoundation.org/RSS/2027/Conference/Submission${7/content/noteNumber/value}/Senior_Area_Chairs",
+      "roboticsfoundation.org/RSS/2027/Conference/Submission${7/content/noteNumber/value}/Area_Chairs"
     ]
   },
   "award_candidate": {
@@ -67,9 +67,9 @@
     "order": 2,
     "description": "Should we consider this submission as a finalist for a best paper, best systems paper, best demo or best student submission?",
     "readers": [
-      "roboticsfoundation.org/RSS/2025/Conference/Program_Chairs",
-      "roboticsfoundation.org/RSS/2025/Conference/Submission${7/content/noteNumber/value}/Senior_Area_Chairs",
-      "roboticsfoundation.org/RSS/2025/Conference/Submission${7/content/noteNumber/value}/Area_Chairs"
+      "roboticsfoundation.org/RSS/2027/Conference/Program_Chairs",
+      "roboticsfoundation.org/RSS/2027/Conference/Submission${7/content/noteNumber/value}/Senior_Area_Chairs",
+      "roboticsfoundation.org/RSS/2027/Conference/Submission${7/content/noteNumber/value}/Area_Chairs"
     ]
   },
   "justification_of_recommendation": {
@@ -85,9 +85,9 @@
     "order": 3,
     "description": "Please provide a brief justification of your final overall recommendation. This will be visible to the authors after the final decision.",
     "readers": [
-      "roboticsfoundation.org/RSS/2025/Conference/Program_Chairs",
-      "roboticsfoundation.org/RSS/2025/Conference/Submission${7/content/noteNumber/value}/Senior_Area_Chairs",
-      "roboticsfoundation.org/RSS/2025/Conference/Submission${7/content/noteNumber/value}/Area_Chairs"
+      "roboticsfoundation.org/RSS/2027/Conference/Program_Chairs",
+      "roboticsfoundation.org/RSS/2027/Conference/Submission${7/content/noteNumber/value}/Senior_Area_Chairs",
+      "roboticsfoundation.org/RSS/2027/Conference/Submission${7/content/noteNumber/value}/Area_Chairs"
     ]
   },
   "confidential_comments": {
@@ -104,9 +104,9 @@
     "order": 4,
     "description": "For any other comments or concerns, provide a brief explanation of your rating, visible to the Program Committee only.",
     "readers": [
-      "roboticsfoundation.org/RSS/2025/Conference/Program_Chairs",
-      "roboticsfoundation.org/RSS/2025/Conference/Submission${7/content/noteNumber/value}/Senior_Area_Chairs",
-      "roboticsfoundation.org/RSS/2025/Conference/Submission${7/content/noteNumber/value}/Area_Chairs"
+      "roboticsfoundation.org/RSS/2027/Conference/Program_Chairs",
+      "roboticsfoundation.org/RSS/2027/Conference/Submission${7/content/noteNumber/value}/Senior_Area_Chairs",
+      "roboticsfoundation.org/RSS/2027/Conference/Submission${7/content/noteNumber/value}/Area_Chairs"
     ]
   }
 }

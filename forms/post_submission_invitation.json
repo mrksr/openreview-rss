@@ -1,18 +1,18 @@
 {
   "signatures": [
-    "roboticsfoundation.org/RSS/2025/Conference"
+    "roboticsfoundation.org/RSS/2027/Conference"
   ],
   "readers": [
-    "roboticsfoundation.org/RSS/2025/Conference",
-    "roboticsfoundation.org/RSS/2025/Conference/Submission${{2/note/id}/number}/Authors"
+    "roboticsfoundation.org/RSS/2027/Conference",
+    "roboticsfoundation.org/RSS/2027/Conference/Submission${{2/note/id}/number}/Authors"
   ],
   "writers": [
-    "roboticsfoundation.org/RSS/2025/Conference"
+    "roboticsfoundation.org/RSS/2027/Conference"
   ],
   "note": {
     "id": {
       "param": {
-        "withInvitation": "roboticsfoundation.org/RSS/2025/Conference/-/Submission",
+        "withInvitation": "roboticsfoundation.org/RSS/2027/Conference/-/Submission",
         "optional": true
       }
     },
@@ -27,31 +27,31 @@
       }
     },
     "signatures": [
-      "roboticsfoundation.org/RSS/2025/Conference/Submission${{2/id}/number}/Authors"
+      "roboticsfoundation.org/RSS/2027/Conference/Submission${{2/id}/number}/Authors"
     ],
     "readers": [
-      "roboticsfoundation.org/RSS/2025/Conference",
-      "roboticsfoundation.org/RSS/2025/Conference/Senior_Area_Chairs",
-      "roboticsfoundation.org/RSS/2025/Conference/Area_Chairs",
-      "roboticsfoundation.org/RSS/2025/Conference/Submission${{2/id}/number}/Authors"
+      "roboticsfoundation.org/RSS/2027/Conference",
+      "roboticsfoundation.org/RSS/2027/Conference/Senior_Area_Chairs",
+      "roboticsfoundation.org/RSS/2027/Conference/Area_Chairs",
+      "roboticsfoundation.org/RSS/2027/Conference/Submission${{2/id}/number}/Authors"
     ],
     "writers": [
-      "roboticsfoundation.org/RSS/2025/Conference",
-      "roboticsfoundation.org/RSS/2025/Conference/Submission${{2/id}/number}/Authors"
+      "roboticsfoundation.org/RSS/2027/Conference",
+      "roboticsfoundation.org/RSS/2027/Conference/Submission${{2/id}/number}/Authors"
     ],
     "content": {
       "authors": {
         "readers": [
-          "roboticsfoundation.org/RSS/2025/Conference",
-          "roboticsfoundation.org/RSS/2025/Conference/Submission${{4/id}/number}/Senior_Area_Chairs",
-          "roboticsfoundation.org/RSS/2025/Conference/Submission${{4/id}/number}/Authors"
+          "roboticsfoundation.org/RSS/2027/Conference",
+          "roboticsfoundation.org/RSS/2027/Conference/Submission${{4/id}/number}/Senior_Area_Chairs",
+          "roboticsfoundation.org/RSS/2027/Conference/Submission${{4/id}/number}/Authors"
         ]
       },
       "authorids": {
         "readers": [
-          "roboticsfoundation.org/RSS/2025/Conference",
-          "roboticsfoundation.org/RSS/2025/Conference/Submission${{4/id}/number}/Senior_Area_Chairs",
-          "roboticsfoundation.org/RSS/2025/Conference/Submission${{4/id}/number}/Authors"
+          "roboticsfoundation.org/RSS/2027/Conference",
+          "roboticsfoundation.org/RSS/2027/Conference/Submission${{4/id}/number}/Senior_Area_Chairs",
+          "roboticsfoundation.org/RSS/2027/Conference/Submission${{4/id}/number}/Authors"
         ]
       },
       "_bibtex": {
@@ -67,18 +67,18 @@
       },
       "pdf": {
         "readers": [
-          "roboticsfoundation.org/RSS/2025/Conference",
-          "roboticsfoundation.org/RSS/2025/Conference/Submission${{4/id}/number}/Senior_Area_Chairs",
-          "roboticsfoundation.org/RSS/2025/Conference/Submission${{4/id}/number}/Area_Chairs",
-          "roboticsfoundation.org/RSS/2025/Conference/Submission${{4/id}/number}/Authors"
+          "roboticsfoundation.org/RSS/2027/Conference",
+          "roboticsfoundation.org/RSS/2027/Conference/Submission${{4/id}/number}/Senior_Area_Chairs",
+          "roboticsfoundation.org/RSS/2027/Conference/Submission${{4/id}/number}/Area_Chairs",
+          "roboticsfoundation.org/RSS/2027/Conference/Submission${{4/id}/number}/Authors"
         ]
       },
       "supplementary_material": {
         "readers": [
-          "roboticsfoundation.org/RSS/2025/Conference",
-          "roboticsfoundation.org/RSS/2025/Conference/Submission${{4/id}/number}/Senior_Area_Chairs",
-          "roboticsfoundation.org/RSS/2025/Conference/Submission${{4/id}/number}/Area_Chairs",
-          "roboticsfoundation.org/RSS/2025/Conference/Submission${{4/id}/number}/Authors"
+          "roboticsfoundation.org/RSS/2027/Conference",
+          "roboticsfoundation.org/RSS/2027/Conference/Submission${{4/id}/number}/Senior_Area_Chairs",
+          "roboticsfoundation.org/RSS/2027/Conference/Submission${{4/id}/number}/Area_Chairs",
+          "roboticsfoundation.org/RSS/2027/Conference/Submission${{4/id}/number}/Authors"
         ]
       }
     }

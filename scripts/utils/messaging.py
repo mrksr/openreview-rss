@@ -41,7 +41,7 @@ def signature():
     """
     Create a signature for emails.
     """
-    return "If you have any questions, please contact rss2025pc@gmail.com.\n\nThank you for your support!\n\nBest regards,\nRSS25 Program Chairs"
+    return "If you have any questions, please contact rss2027pc@gmail.com.\n\nThank you for your support!\n\nBest regards,\nRSS27 Program Chairs"
 
 
 class Emails:

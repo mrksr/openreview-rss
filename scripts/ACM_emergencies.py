@@ -63,19 +63,19 @@ def deploy_to_openreview(client, secondary_acs):
             tail=ac,
             weight=1,
             signatures=[
-                "roboticsfoundation.org/RSS/2025/Conference/Program_Chairs"
+                f"{VENUE}/Program_Chairs"
             ],
             readers=[
-                "roboticsfoundation.org/RSS/2025/Conference",
-                f"roboticsfoundation.org/RSS/2025/Conference/Submission{paper_no}/Senior_Area_Chairs",
+                VENUE,
+                f"{VENUE}/Submission{paper_no}/Senior_Area_Chairs",
                 ac,
             ],
             writers=[
-                "roboticsfoundation.org/RSS/2025/Conference",
-                f"roboticsfoundation.org/RSS/2025/Conference/Submission{paper_no}/Senior_Area_Chairs",
+                VENUE,
+                f"{VENUE}/Submission{paper_no}/Senior_Area_Chairs",
             ],
             nonreaders=[
-                f"roboticsfoundation.org/RSS/2025/Conference/Submission{paper_no}/Authors"
+                f"{VENUE}/Submission{paper_no}/Authors"
             ]
         ))
     # client.post_edges(edges)

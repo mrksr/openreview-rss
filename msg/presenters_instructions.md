@@ -1,6 +1,6 @@
 Dear {{fullname}},
 
-We look forward to your presentation at the upcoming RSS2025! This email contains important information that can help you prepare for your poster and spotlight talk. 
+We look forward to your presentation at the upcoming RSS2027! This email contains important information that can help you prepare for your poster and spotlight talk. 
 
 **Setting Up Your Poster**
 
@@ -28,7 +28,7 @@ Your timely arrival backstage is crucial for a seamless transition between speak
 Thank you for your cooperation, and we look forward to your presentation!
 
 Best regards,
-The RSS 2025 Organizing Committee
+The RSS 2027 Organizing Committee
 
 
 

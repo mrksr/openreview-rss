@@ -16,9 +16,9 @@ Read a list of ACs and their status from a CSV file and send expertise selection
 
 def send_registration_invitation(acs, client):
     mail = Emails()
-    mail.subject = "[RSS25] Senior Area Chair Registration Available"
+    mail.subject = "[RSS27] Senior Area Chair Registration Available"
     mail.message = (
-        "Dear {{fullname}},\n\nThe Senior Area Chair Registration Task (https://openreview.net/group?id=roboticsfoundation.org/RSS/2025/Conference/Senior_Area_Chairs#senior-area-chair-tasks) is now available and due by January 10. To complete it, please\n\n1) Update your OpenReview profile. This information will be used to avoid conflicts of interests (CoI). You can find your OpenReview profile here: https://openreview.net/profile.\n\n2) Complete your Expertise Selection by importing your relevant papers to OpenReview. This information will be used to compute affinity scores and match papers to ACs and reviewers. You can find your expertise selection here: https://openreview.net/invitation?id=roboticsfoundation.org/RSS/2025/Conference/Senior_Area_Chairs/-/Expertise_Selection.\n\n3) Please select at least 3 RSS Keywords that describe your expertise in decreasing order of priority. These will be used to match papers to ACs and reviewers.\n\nThank you for serving as a Senior Area Chair for RSS 2025, we're excited to have you on board! "
+        "Dear {{fullname}},\n\nThe Senior Area Chair Registration Task (https://openreview.net/group?id=roboticsfoundation.org/RSS/2027/Conference/Senior_Area_Chairs#senior-area-chair-tasks) is now available and due by January 10. To complete it, please\n\n1) Update your OpenReview profile. This information will be used to avoid conflicts of interests (CoI). You can find your OpenReview profile here: https://openreview.net/profile.\n\n2) Complete your Expertise Selection by importing your relevant papers to OpenReview. This information will be used to compute affinity scores and match papers to ACs and reviewers. You can find your expertise selection here: https://openreview.net/invitation?id=roboticsfoundation.org/RSS/2027/Conference/Senior_Area_Chairs/-/Expertise_Selection.\n\n3) Please select at least 3 RSS Keywords that describe your expertise in decreasing order of priority. These will be used to match papers to ACs and reviewers.\n\nThank you for serving as a Senior Area Chair for RSS 2027, we're excited to have you on board! "
         + signature()
     )
     mail.recipients = [ac["email"] for ac in acs if ac["role"] == "Senior_Area_Chairs"]
@@ -57,9 +57,9 @@ def send_registration_reminder(acs, client):
     # Send reminders.
     if only_kw_missing:
         mail = Emails()
-        mail.subject = "[RSS25] Please Select Area Chair Keywords"
+        mail.subject = "[RSS27] Please Select Area Chair Keywords"
         mail.message = (
-            "Dear {{fullname}},\n\nOur records indicate that you have already registered but not yet selected 3 Keywords. To add them, you can go to 'Area Chair Console -> Area Chairs Registration -> Edit (Registration) -> Keyword Selection' (https://openreview.net/group?id=roboticsfoundation.org/RSS/2025/Conference/Area_Chairs#area-chair-tasks).\n\n"
+            "Dear {{fullname}},\n\nOur records indicate that you have already registered but not yet selected 3 Keywords. To add them, you can go to 'Area Chair Console -> Area Chairs Registration -> Edit (Registration) -> Keyword Selection' (https://openreview.net/group?id=roboticsfoundation.org/RSS/2027/Conference/Area_Chairs#area-chair-tasks).\n\n"
             + deadline_reminder(deadline)
             + "\n\n"
             + signature()
@@ -69,9 +69,9 @@ def send_registration_reminder(acs, client):
 
     if registration_missing:
         mail = Emails()
-        mail.subject = "[RSS25] Please Complete the Area Chair Registration"
+        mail.subject = "[RSS27] Please Complete the Area Chair Registration"
         mail.message = (
-            "Dear {{fullname}},\n\nOur records indicate that you have not yet completed your registration. To do so, please go to 'Area Chair Console -> Tasks -> Area Chairs Registration' (https://openreview.net/group?id=roboticsfoundation.org/RSS/2025/Conference/Area_Chairs#area-chair-tasks).\n\n"
+            "Dear {{fullname}},\n\nOur records indicate that you have not yet completed your registration. To do so, please go to 'Area Chair Console -> Tasks -> Area Chairs Registration' (https://openreview.net/group?id=roboticsfoundation.org/RSS/2027/Conference/Area_Chairs#area-chair-tasks).\n\n"
             + deadline_reminder(deadline)
             + "\n\n"
             + signature()
@@ -81,9 +81,9 @@ def send_registration_reminder(acs, client):
 
     if sac_registration_missing:
         mail = Emails()
-        mail.subject = "[RSS25] Please Complete the Senior Area Chair Registration"
+        mail.subject = "[RSS27] Please Complete the Senior Area Chair Registration"
         mail.message = (
-            "Dear {{fullname}},\n\nOur records indicate that you have not yet completed your registration. To do so, please go to 'Senior Area Chair Console -> Tasks -> Senior Area Chairs Registration' (https://openreview.net/group?id=roboticsfoundation.org/RSS/2025/Conference/Senior_Area_Chairs#senior-area-chair-tasks).\n\n"
+            "Dear {{fullname}},\n\nOur records indicate that you have not yet completed your registration. To do so, please go to 'Senior Area Chair Console -> Tasks -> Senior Area Chairs Registration' (https://openreview.net/group?id=roboticsfoundation.org/RSS/2027/Conference/Senior_Area_Chairs#senior-area-chair-tasks).\n\n"
             + deadline_reminder(deadline)
             + "\n\n"
             + signature()

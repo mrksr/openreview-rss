@@ -44,10 +44,10 @@ def send_dr_notification(client):
 
         notified_papers.add(nr)
         mail = Emails()
-        mail.subject = f"[RSS 2025] Submission {nr} Decision"
+        mail.subject = f"[RSS 2027] Submission {nr} Decision"
         mail.message = (
             "Dear {{fullname}},"
-            + f'\n\nWe regret to inform you that your submission {nr} "{title}" has been desk rejected, and will not be considered for review at RSS 2025.\n\nReason: {reason}\n\nThe desk rejection decision follows the RSS guidelines, reported on the RSS website: https://roboticsconference.org/reviewps/\n\nWhile we understand this is disappointing news, we hope this will not discourage you from pursuing your research and hope you will still consider submitting to RSS and participating in RSS 2025.\n\nSincerely,\nRSS 2025 Program Chair'
+            + f'\n\nWe regret to inform you that your submission {nr} "{title}" has been desk rejected, and will not be considered for review at RSS 2027.\n\nReason: {reason}\n\nThe desk rejection decision follows the RSS guidelines, reported on the RSS website: https://roboticsconference.org/reviewps/\n\nWhile we understand this is disappointing news, we hope this will not discourage you from pursuing your research and hope you will still consider submitting to RSS and participating in RSS 2027.\n\nSincerely,\nRSS 2027 Program Chair'
         )
 
         mail.recipients = authors

@@ -1,10 +1,10 @@
 Dear {{fullname}},
 
-You have been nominated by the program chair committee of RSS 2025 to serve as {{invitee_role}}. As a respected researcher in the area, we hope you will accept and help us make RSS 2025 a success.
+You have been nominated by the program chair committee of RSS 2027 to serve as {{invitee_role}}. As a respected researcher in the area, we hope you will accept and help us make RSS 2027 a success.
 
 As an Area Chair, you will be responsible for finding reviewers and handling the review process for up to 12 papers. Moreover, you will be asked to attend the Area Chair meeting to discuss the RSS submissions on April 4-5, 2025 at MIT.
 
-You are also welcome to submit papers, so please also consider submitting to RSS 2025.
+You are also welcome to submit papers, so please also consider submitting to RSS 2027.
 
 We will be using OpenReview.net with the intention of have an engaging reviewing process inclusive of the whole community.
 
@@ -20,4 +20,4 @@ If you have any questions, please contact {{contact_info}}.
 
 Cheers!
 
-RSS 2025 Program Chairs
+RSS 2027 Program Chairs

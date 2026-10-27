@@ -108,9 +108,9 @@
     "order": 6,
     "description": "Considering the above comments, indicate your  overall recommendation. This will be visible to authors after the final decision.",
     "readers": [
-      "roboticsfoundation.org/RSS/2025/Conference/Program_Chairs",
-      "roboticsfoundation.org/RSS/2025/Conference/Submission${7/content/noteNumber/value}/Senior_Area_Chairs",
-      "roboticsfoundation.org/RSS/2025/Conference/Submission${7/content/noteNumber/value}/Area_Chairs",
+      "roboticsfoundation.org/RSS/2027/Conference/Program_Chairs",
+      "roboticsfoundation.org/RSS/2027/Conference/Submission${7/content/noteNumber/value}/Senior_Area_Chairs",
+      "roboticsfoundation.org/RSS/2027/Conference/Submission${7/content/noteNumber/value}/Area_Chairs",
       "${4/signatures}"
     ]
   },
@@ -127,9 +127,9 @@
     "order": 7,
     "description": "Please provide a brief explanation of your rating, visible to the Program Committee only. Please also include any other confidential concerns such as formatting, anonymity, plagiarism, and others.",
     "readers": [
-      "roboticsfoundation.org/RSS/2025/Conference/Program_Chairs",
-      "roboticsfoundation.org/RSS/2025/Conference/Submission${7/content/noteNumber/value}/Senior_Area_Chairs",
-      "roboticsfoundation.org/RSS/2025/Conference/Submission${7/content/noteNumber/value}/Area_Chairs",
+      "roboticsfoundation.org/RSS/2027/Conference/Program_Chairs",
+      "roboticsfoundation.org/RSS/2027/Conference/Submission${7/content/noteNumber/value}/Senior_Area_Chairs",
+      "roboticsfoundation.org/RSS/2027/Conference/Submission${7/content/noteNumber/value}/Area_Chairs",
       "${4/signatures}"
     ]
   },
@@ -164,9 +164,9 @@
     },
     "order": 8,
     "readers": [
-      "roboticsfoundation.org/RSS/2025/Conference/Program_Chairs",
-      "roboticsfoundation.org/RSS/2025/Conference/Submission${7/content/noteNumber/value}/Senior_Area_Chairs",
-      "roboticsfoundation.org/RSS/2025/Conference/Submission${7/content/noteNumber/value}/Area_Chairs",
+      "roboticsfoundation.org/RSS/2027/Conference/Program_Chairs",
+      "roboticsfoundation.org/RSS/2027/Conference/Submission${7/content/noteNumber/value}/Senior_Area_Chairs",
+      "roboticsfoundation.org/RSS/2027/Conference/Submission${7/content/noteNumber/value}/Area_Chairs",
       "${4/signatures}"
     ]
   }

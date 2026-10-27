@@ -26,9 +26,9 @@ def send_registraton_reminders(reviewers, client):
     # Send reminders.
     if to_remind:
         mail = Emails()
-        mail.subject = "[RSS25] Reminder: Reviewer Registration"
+        mail.subject = "[RSS27] Reminder: Reviewer Registration"
         mail.message = (
-            "Dear {{fullname}},\n\nThank you for agreeing to serve as a Reviewer for RSS 2025! Our records indicate that you have not yet completed the reviewer registration. To do so, please go to 'Reviewer Console -> Tasks -> Reviewer Registration' (https://openreview.net/group?id=roboticsfoundation.org/RSS/2025/Conference/Reviewers#reviewer-tasks). \n\nNote that without a complete OpenReview account, we will not be able to assign you any papers.\n\n"
+            "Dear {{fullname}},\n\nThank you for agreeing to serve as a Reviewer for RSS 2027! Our records indicate that you have not yet completed the reviewer registration. To do so, please go to 'Reviewer Console -> Tasks -> Reviewer Registration' (https://openreview.net/group?id=roboticsfoundation.org/RSS/2025/Conference/Reviewers#reviewer-tasks). \n\nNote that without a complete OpenReview account, we will not be able to assign you any papers.\n\n"
             + deadline_reminder(deadline)
             + "\n\n"
             + signature()

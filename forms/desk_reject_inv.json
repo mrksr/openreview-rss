@@ -1,12 +1,12 @@
 {
   "signatures": [
-    "roboticsfoundation.org/RSS/2025/Conference"
+    "roboticsfoundation.org/RSS/2027/Conference"
   ],
   "readers": [
-    "roboticsfoundation.org/RSS/2025/Conference"
+    "roboticsfoundation.org/RSS/2027/Conference"
   ],
   "writers": [
-    "roboticsfoundation.org/RSS/2025/Conference"
+    "roboticsfoundation.org/RSS/2027/Conference"
   ],
   "content": {
     "noteNumber": {
@@ -26,22 +26,22 @@
   },
   "replacement": true,
   "invitation": {
-    "id": "roboticsfoundation.org/RSS/2025/Conference/Submission${2/content/noteNumber/value}/-/Desk_Rejection_Recommendation",
+    "id": "roboticsfoundation.org/RSS/2027/Conference/Submission${2/content/noteNumber/value}/-/Desk_Rejection_Recommendation",
     "signatures": [
-      "roboticsfoundation.org/RSS/2025/Conference"
+      "roboticsfoundation.org/RSS/2027/Conference"
     ],
     "readers": [
       "everyone"
     ],
     "writers": [
-      "roboticsfoundation.org/RSS/2025/Conference"
+      "roboticsfoundation.org/RSS/2027/Conference"
     ],
     "minReplies": 1,
     "invitees": [
-      "roboticsfoundation.org/RSS/2025/Conference",
-      "roboticsfoundation.org/RSS/2025/Conference/Program_Chairs",
-      "roboticsfoundation.org/RSS/2025/Conference/Submission${3/content/noteNumber/value}/Area_Chairs",
-      "roboticsfoundation.org/RSS/2025/Conference/Submission${3/content/noteNumber/value}/Senior_Area_Chairs"
+      "roboticsfoundation.org/RSS/2027/Conference",
+      "roboticsfoundation.org/RSS/2027/Conference/Program_Chairs",
+      "roboticsfoundation.org/RSS/2027/Conference/Submission${3/content/noteNumber/value}/Area_Chairs",
+      "roboticsfoundation.org/RSS/2027/Conference/Submission${3/content/noteNumber/value}/Senior_Area_Chairs"
     ],
     "noninvitees": [],
     "cdate": 1737666383094,
@@ -51,15 +51,15 @@
         "param": {
           "items": [
             {
-              "value": "roboticsfoundation.org/RSS/2025/Conference/Program_Chairs",
+              "value": "roboticsfoundation.org/RSS/2027/Conference/Program_Chairs",
               "optional": true
             },
             {
-              "value": "roboticsfoundation.org/RSS/2025/Conference/Submission${7/content/noteNumber/value}/Senior_Area_Chairs",
+              "value": "roboticsfoundation.org/RSS/2027/Conference/Submission${7/content/noteNumber/value}/Senior_Area_Chairs",
               "optional": true
             },
            {
-              "value": "roboticsfoundation.org/RSS/2025/Conference/Submission${7/content/noteNumber/value}/Area_Chairs",
+              "value": "roboticsfoundation.org/RSS/2027/Conference/Submission${7/content/noteNumber/value}/Area_Chairs",
               "optional": true
             }
           ]
@@ -70,13 +70,13 @@
       ],
       "nonreaders": [],
       "writers": [
-        "roboticsfoundation.org/RSS/2025/Conference",
+        "roboticsfoundation.org/RSS/2027/Conference",
         "${2/signatures}"
       ],
       "note": {
         "id": {
           "param": {
-            "withInvitation": "roboticsfoundation.org/RSS/2025/Conference/Submission${6/content/noteNumber/value}/-/Desk_Rejection_Recommendation",
+            "withInvitation": "roboticsfoundation.org/RSS/2027/Conference/Submission${6/content/noteNumber/value}/-/Desk_Rejection_Recommendation",
             "optional": true
           }
         },
@@ -124,12 +124,12 @@
         },
         "replyto": "${4/content/noteId/value}",
         "readers": [
-          "roboticsfoundation.org/RSS/2025/Conference/Program_Chairs",
-          "roboticsfoundation.org/RSS/2025/Conference/Submission${5/content/noteNumber/value}/Senior_Area_Chairs",
-          "roboticsfoundation.org/RSS/2025/Conference/Submission${5/content/noteNumber/value}/Area_Chairs"
+          "roboticsfoundation.org/RSS/2027/Conference/Program_Chairs",
+          "roboticsfoundation.org/RSS/2027/Conference/Submission${5/content/noteNumber/value}/Senior_Area_Chairs",
+          "roboticsfoundation.org/RSS/2027/Conference/Submission${5/content/noteNumber/value}/Area_Chairs"
         ],
         "writers": [
-          "roboticsfoundation.org/RSS/2025/Conference",
+          "roboticsfoundation.org/RSS/2027/Conference",
           "${3/signatures}"
         ]
       }

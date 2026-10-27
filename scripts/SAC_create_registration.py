@@ -1,17 +1,18 @@
 import openreview
 import datetime
 from utils.setup_client import setup_client
+from utils.paths import VENUE, TEST_VENUE
 
 
 def main():
     """
     Script to create a registration stage for Senior Area Chairs. These instructions require the old API and were provided by OpenReview support.
     """
-    TARGET_GROUP = "roboticsfoundation.org/RSS/2025/Conference/Senior_Area_Chairs"  # Test: "roboticsfoundation.org/RSS/2025/Test/Senior_Area_Chairs"
+    TARGET_GROUP = f"{VENUE}/Senior_Area_Chairs"  # Test: f"{TEST_VENUE}/Senior_Area_Chairs"
     REQUEST_FORM_ID = "pAjP-mkFPfb" # Test: "rIjQAtPaX-z"
     start_date = datetime.datetime.now()
     due_date = datetime.datetime(2025,1,11,11,59)
-    instructions = 'As a Senior Area Chair, please complete the following two tasks to complete the registration:\n\n1) Update your OpenReview profile. This information will be used to avoid conflicts of interests (CoI). You can find your OpenReview profile here: https://openreview.net/profile, or by clicking on your name in the top right corner. Afterwards click "Edit Profile" and complete all sections.\n\n2) Complete your Expertise Selection by importing your relevant papers to OpenReview. This information will be used to compute affinity scores and match papers to ACs and reviewers. You can find your expertise selection here: https://openreview.net/invitation?id=roboticsfoundation.org/RSS/2025/Conference/Senior_Area_Chairs/-/Expertise_Selection, or by navigating to "Tasks->RSS 2025->Senior Area Chair Registration" in the top right corner.\n\n3) Please select at least 3 RSS Keywords that describe your expertise in decreasing order of priority. These will be used to match papers to SACs, ACs and reviewers.\n\nThank you for serving as an Area Chair for RSS 2025, we\'re excited to have you on board!'
+    instructions = 'As a Senior Area Chair, please complete the following two tasks to complete the registration:\n\n1) Update your OpenReview profile. This information will be used to avoid conflicts of interests (CoI). You can find your OpenReview profile here: https://openreview.net/profile, or by clicking on your name in the top right corner. Afterwards click "Edit Profile" and complete all sections.\n\n2) Complete your Expertise Selection by importing your relevant papers to OpenReview. This information will be used to compute affinity scores and match papers to ACs and reviewers. You can find your expertise selection here: https://openreview.net/invitation?id=roboticsfoundation.org/RSS/2027/Conference/Senior_Area_Chairs/-/Expertise_Selection, or by navigating to "Tasks->RSS 2027->Senior Area Chair Registration" in the top right corner.\n\n3) Please select at least 3 RSS Keywords that describe your expertise in decreasing order of priority. These will be used to match papers to SACs, ACs and reviewers.\n\nThank you for serving as an Area Chair for RSS 2027, we\'re excited to have you on board!'
     name = "Registration"
     title = "Senior Area Chair Registration"
     additional_fields = {

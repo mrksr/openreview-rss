@@ -74,9 +74,9 @@ def process_reviews(client):
 
 def update_content_readers(reply, paper_no):
     new_readers = [r for r in set([
-        "roboticsfoundation.org/RSS/2025/Conference/Program_Chairs",
-        f"roboticsfoundation.org/RSS/2025/Conference/Submission{paper_no}/Senior_Area_Chairs",
-        f"roboticsfoundation.org/RSS/2025/Conference/Submission{paper_no}/Area_Chairs",
+        f"{VENUE}/Program_Chairs",
+        f"{VENUE}/Submission{paper_no}/Senior_Area_Chairs",
+        f"{VENUE}/Submission{paper_no}/Area_Chairs",
         reply["signatures"][0]])
     ]
     for k,v in reply["content"].items():

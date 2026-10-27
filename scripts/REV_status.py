@@ -18,7 +18,7 @@ REV_LIST_FILE = os.path.join(
 REV_INVITATION_FILE = os.path.join(ROOT_DIR, "private", "New_Reviewer_Invitations.csv")
 
 """
-Read the initial specific RSS 2025 Reviewers spread sheet, invite new reviewers, check the status of selected reviewers.
+Read the initial specific RSS 2027 Reviewers spread sheet, invite new reviewers, check the status of selected reviewers.
 """
 
 
