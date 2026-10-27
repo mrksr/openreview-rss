@@ -1,5 +1,5 @@
-# openreview
-Python Scripts for OpenReview for RSS 2025.
+# openreview-rss
+Python scripts for OpenReview for RSS 2027, based on the RSS 2025 tooling.
 
 ## Table of Contents
 - [**Important Disclaimers**](#️-important-disclaimers)
@@ -8,7 +8,7 @@ Python Scripts for OpenReview for RSS 2025.
 - [**Credits**](#credits)
 
 ## ⚠️ **Important Disclaimers** 
-- These scripts were developed for RSS 2025 and certain file formats (e.g., the committee worksheets etc) that may be specific to RSS 2025.
+- These scripts were developed for RSS 2025 and adapted to RSS 2027. Venue ids, URLs, and the contact address point to RSS 2027 (`scripts/utils/paths.py`), but some committee worksheet formats, CSV filenames, deadlines, and email texts may still be specific to RSS 2025.
 - The scripts were designed for `openreview-py` `v1.51.2`. Changes in functionality may have occured since then (and already occured during development).
 - Many of the scripts **execute actions directly on OpenReview**. While we tried to safeguard sensitive actions always carefully check the scripts you want to run before running, as they may execute **sensitive actions** such as desk rejects or emailing all authors etc.
 - Conferences are hectic and many of the scripts perform individual actions and may have been alterated and reworked during development. While we hope they help we do currently not actively maintain the repository.
@@ -23,8 +23,8 @@ Python Scripts for OpenReview for RSS 2025.
 
 2. Clone the repository:
     ```bash
-    git clone git@github.com:rssrobotics/openreview.git
-    cd openreview
+    git clone https://github.com/mrksr/openreview-rss
+    cd openreview-rss
     ```
 
 3. Create a `private/credentials.json` file containing your OpenReview credentials. The access right of this account will determine what the scripts can see.
@@ -39,7 +39,7 @@ Please read the disclaimers above first and use at your own risk :)
 The scripts are designed to execute individual actions that are useful over the couse of a conference. The repository is structured into the following directories:
 
 ```
-openreview/
+openreview-rss/
 ├── scripts/         # Main Python scripts for interacting with OpenReview.
 ├── data/            # Public data files for the conference.
 ├── private/         # User-specific credentials and confidential files. Almost all data is read from and written to this directory. This directory is not tracked.
@@ -52,7 +52,7 @@ The scripts have a prefix indicating the main topic of functionality, which roug
 ```
 AC   - Area Chair recruitment and setup.
 REV  - Reviewer recruitmet, setup, and tracking.
-SAC  - Senior Area Chair recruitment and paper assignment (could not yet be handled via native OpenReview).
+SAC  - Senior Area Chair registration, AC to SAC assignment, and paper assignment (could not yet be handled via native OpenReview).
 SUB  - Submissions and introspection.
 ACM  - Area Chair Meeting setup, processing, and live support.
 DEC  - Decisions.
@@ -62,7 +62,7 @@ PLOT - Plotting and visualization tools.
 
 Individual scripts can be run using:
 ```bash
-python3 openreview/scripts/my_script.py
+python3 scripts/my_script.py
 ```
 All scripts are designed to be executable, whereas frequently used functionality and tools can be found in the subdirectory `utils`. Typically, the `main()` function of each script contains several actions that can be called or are commented out. These can often be run in sequence or separately, depending on the need.
 
