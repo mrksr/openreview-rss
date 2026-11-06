@@ -2,6 +2,7 @@ import openreview
 from openreview.api import OpenReviewClient
 import json
 import os
+import subprocess
 
 from utils.paths import VENUE, ROOT_DIR
 
@@ -22,6 +23,23 @@ def read_credentials(file_path):
         print(f"Please fill in the 'username' and 'password' fields in '{file_path}'.")
         return None
     return credentials
+
+
+def op_otp_provider(credentials, test_venue):
+    """
+    Optional: read the TOTP code for MFA from 1Password via the `op` CLI. Enabled by the "op_item" (and for the test venue "op_item_dev") and optional "op_account" keys in the credentials file. No secret is stored in the credentials file.
+    """
+    item = credentials.get("op_item_dev" if test_venue else "op_item")
+    if not item:
+        return None
+    cmd = ["op", "item", "get", item, "--otp"]
+    if credentials.get("op_account"):
+        cmd += ["--account", credentials["op_account"]]
+
+    def provider(method):
+        return subprocess.run(cmd, capture_output=True, text=True, check=True).stdout.strip()
+
+    return provider
 
 
 def setup_client(test_venue=False, old_api=False, credentials=CREDENTIALS_PATH):
@@ -49,12 +67,17 @@ def setup_client(test_venue=False, old_api=False, credentials=CREDENTIALS_PATH):
             baseurl=f"https://{'dev' if test_venue else ''}api2.openreview.net",
             username=credentials["username"],
             password=credentials["password"],
+            mfa_code_provider=op_otp_provider(credentials, test_venue),
         )
 
     # Verify the client.
     try:
-        user_profile = client.get_profile()
-        print(f"OpenReview client initialized successfully (User: {user_profile.id}).")
+        # Newer openreview-py versions reject get_profile() without an id.
+        user = getattr(client, "user", None) or {}
+        user_id = user.get("profile", {}).get("id") or user.get("id")
+        if not user_id:
+            user_id = client.get_profile(credentials["username"]).id
+        print(f"OpenReview client initialized successfully (User: {user_id}).")
     except Exception as e:
         print("Error initializing OpenReview client:", e)
         return None
