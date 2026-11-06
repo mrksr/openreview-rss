@@ -1,5 +1,4 @@
 from utils.setup_client import setup_client
-from utils.profiles import ProfileMatcher
 from utils.paths import VENUE, TEST_VENUE, ROOT_DIR
 import openreview
 import os
@@ -50,6 +49,53 @@ def get_existing(client, invitation):
     return {(e.head, e.tail) for e in edges}
 
 
+def post_proposed_edges(client, venue, invitation, pairs, acs, sacs):
+    """
+    The only function that writes to OpenReview. It posts nothing but Proposed_Assignment edges between existing group members. It never creates or invites users or groups and never deploys.
+    """
+    expected = f"{venue}/Senior_Area_Chairs/-/Proposed_Assignment"
+    if invitation != expected:
+        raise ValueError(f"Refusing to write to '{invitation}', expected '{expected}'.")
+    # The invitation must already exist. This raises if it does not.
+    client.get_invitation(invitation)
+    acs = set(acs)
+    sacs = set(sacs)
+    for ac, sac in pairs:
+        if ac not in acs or sac not in sacs:
+            raise ValueError(f"Refusing to write edge {ac} -> {sac}: not both group members.")
+
+    edges = [
+        openreview.api.Edge(
+            invitation=invitation,
+            head=ac,
+            tail=sac,
+            label=ASSIGNMENT_LABEL,
+            weight=1,
+            signatures=[f"{venue}/Program_Chairs"],
+            # Fixed by the invitation: readers are the venue, the tail (SAC), and the head (AC).
+            readers=[venue, sac, ac],
+            writers=[venue],
+        )
+        for ac, sac in pairs
+    ]
+    openreview.tools.post_bulk_edges(client, edges)
+
+
+def alias_map(client, ids_or_emails):
+    """
+    Map every given id or email, and every alias of its profile, to the canonical profile id. People with several profile ids or emails then still match. Ids without a profile map to themselves.
+    """
+    queries = [q.strip().lower() if "@" in q else q.strip() for q in ids_or_emails]
+    aliases = {q: q for q in queries}
+    for profile in openreview.tools.get_profiles(client, queries):
+        names = profile.content.get("names", [])
+        for alias in [profile.id] + [n["username"] for n in names if n.get("username")]:
+            aliases[alias] = profile.id
+        for email in profile.content.get("emails", []):
+            aliases[email.lower()] = profile.id
+    return aliases
+
+
 def assign_acs_to_sacs(client, venue):
     invitation = f"{venue}/Senior_Area_Chairs/-/Proposed_Assignment"
     pairs = read_pairs()
@@ -57,18 +103,19 @@ def assign_acs_to_sacs(client, venue):
     sacs = get_members(client, f"{venue}/Senior_Area_Chairs")
     print(f"Found {len(acs)} ACs and {len(sacs)} SACs in OpenReview.")
 
-    # Map everything to one id per person, so that duplicate profiles and emails still match.
-    pm = ProfileMatcher(client, [a for a, _ in pairs] + [s for _, s in pairs] + acs + sacs)
-    ac_ids = {pm.get_id(a): a for a in acs}  # unique id: group member id
-    sac_ids = {pm.get_id(s): s for s in sacs}
+    # Map everything to one canonical id per person, so that alias profiles and emails still match.
+    aliases = alias_map(client, [a for a, _ in pairs] + [s for _, s in pairs] + acs + sacs)
+    canon = lambda x: aliases.get(x.lower() if "@" in x else x, x)
+    ac_ids = {canon(a): a for a in acs}  # canonical id: group member id
+    sac_ids = {canon(s): s for s in sacs}
 
     edges = []
     ignored_acs = set()
     ignored_sacs = set()
     seen = set()
     for ac, sac in pairs:
-        ac_member = ac_ids.get(pm.get_id(ac))
-        sac_member = sac_ids.get(pm.get_id(sac))
+        ac_member = ac_ids.get(canon(ac))
+        sac_member = sac_ids.get(canon(sac))
         if ac_member is None:
             ignored_acs.add(ac)
         if sac_member is None:
@@ -98,7 +145,8 @@ def assign_acs_to_sacs(client, venue):
         by_ac.setdefault(ac, set()).add(sac)
     for ac, s in by_ac.items():
         if len(s) > 1:
-            print(f"WARNING: {ac} is listed with several SACs: {sorted(s)}")
+            print(f"WARNING: {ac} is listed with several SACs: {sorted(s)}. Skipping this AC.")
+    new_edges = [e for e in new_edges if len(by_ac[e[0]]) == 1]
     for ac, sac in existing:
         if ac in by_ac and sac not in by_ac[ac]:
             print(f"WARNING: {ac} already has SAC {sac} with label '{ASSIGNMENT_LABEL}'.")
@@ -119,22 +167,7 @@ def assign_acs_to_sacs(client, venue):
         if answer.lower() == "y":
             break
 
-    openreview.tools.post_bulk_edges(
-        client,
-        [
-            openreview.api.Edge(
-                invitation=invitation,
-                head=ac,
-                tail=sac,
-                label=ASSIGNMENT_LABEL,
-                weight=1,
-                signatures=[f"{venue}/Program_Chairs"],
-                readers=[venue, f"{venue}/Program_Chairs", sac],
-                writers=[venue, f"{venue}/Program_Chairs"],
-            )
-            for ac, sac in new_edges
-        ],
-    )
+    post_proposed_edges(client, venue, invitation, new_edges, acs, sacs)
     print(f"Posted {len(new_edges)} edges with label '{ASSIGNMENT_LABEL}'.")
     print("Browse and deploy them from the Senior Area Chairs Assignments page.")
 
