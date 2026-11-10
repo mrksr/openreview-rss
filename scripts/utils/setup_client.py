@@ -7,6 +7,7 @@ import subprocess
 from utils.paths import VENUE, ROOT_DIR
 
 CREDENTIALS_PATH = os.path.join(ROOT_DIR, "private", "credentials.json")
+CREDENTIALS_DEV_PATH = os.path.join(ROOT_DIR, "private", "credentials_dev.json")
 
 
 def read_credentials(file_path):
@@ -25,11 +26,11 @@ def read_credentials(file_path):
     return credentials
 
 
-def op_otp_provider(credentials, test_venue):
+def op_otp_provider(credentials):
     """
-    Optional: read the TOTP code for MFA from 1Password via the `op` CLI. Enabled by the "op_item" (and for the test venue "op_item_dev") and optional "op_account" keys in the credentials file. No secret is stored in the credentials file.
+    Optional: read the TOTP code for MFA from 1Password via the `op` CLI. Enabled by the "op_item" and optional "op_account" keys in the credentials file. No secret is stored in the credentials file.
     """
-    item = credentials.get("op_item_dev" if test_venue else "op_item")
+    item = credentials.get("op_item")
     if not item:
         return None
     cmd = ["op", "item", "get", item, "--otp"]
@@ -42,14 +43,17 @@ def op_otp_provider(credentials, test_venue):
     return provider
 
 
-def setup_client(test_venue=False, old_api=False, credentials=CREDENTIALS_PATH):
+def setup_client(test_venue=False, old_api=False, credentials=None):
     """
     Setup an OpenReview client.
     test_venue: If true create a client to the test venue instead.
     old_api: If true use the v1 OpenReview API, otherwise use the v2 API.
-    credentials: Path to the credentials JSON file.
+    credentials: Path to the credentials JSON file. Defaults to private/credentials.json, or
+        private/credentials_dev.json for the test venue.
     """
     # Get credentials from the user.
+    if credentials is None:
+        credentials = CREDENTIALS_DEV_PATH if test_venue else CREDENTIALS_PATH
     credentials = read_credentials(credentials)
     if not credentials:
         return None
@@ -58,16 +62,16 @@ def setup_client(test_venue=False, old_api=False, credentials=CREDENTIALS_PATH):
     client = None
     if old_api:
         client = openreview.Client(
-            baseurl=f"https://{'dev' if test_venue else ''}api.openreview.net",
+            baseurl=f"https://api.{'dev.' if test_venue else ''}openreview.net",
             username=credentials["username"],
             password=credentials["password"],
         )
     else:
         client = OpenReviewClient(
-            baseurl=f"https://{'dev' if test_venue else ''}api2.openreview.net",
+            baseurl=f"https://api2.{'dev.' if test_venue else ''}openreview.net",
             username=credentials["username"],
             password=credentials["password"],
-            mfa_code_provider=op_otp_provider(credentials, test_venue),
+            mfa_code_provider=op_otp_provider(credentials),
         )
 
     # Verify the client.

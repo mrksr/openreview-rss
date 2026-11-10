@@ -4,3 +4,6 @@ Add your OpenReview credentials to the this directory by creating a `credentials
 ```json 
 { "username": "???", "password": "???"}
 ```
+
+For the dev server (`setup_client(test_venue=True)`), create `credentials_dev.json` with the same structure.
+For MFA via 1Password, add `"op_item"` (the 1Password item ID) and optionally `"op_account"` to either file.
